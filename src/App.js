@@ -6,14 +6,14 @@ import MyImage from "./Images/Caperucita-Roja.webp"
 
 export default function App() {
   const [isUserIdentified, setIsUserIdentified] = useState(false);
-  const [isUserReader, setIsUserReader] = useState(false);
+  let isUserReader= false;
 
 
   return (
     <>
       <Header isUserIdentified={isUserIdentified} setIsUserIdentified={setIsUserIdentified} isUserReader={isUserReader} />
       <main className="App">
-        <img src={MyImage} className="rounded mx-auto d-block" />
+        <img src={MyImage} alt="heroimg"className="rounded mx-auto d-block" />
         {
           isUserReader ?
             <Reader />

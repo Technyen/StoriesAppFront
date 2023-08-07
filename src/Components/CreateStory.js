@@ -34,7 +34,7 @@ export default function CreateStory() {
             <Modal.Header closeButton>
               <Modal.Title>{createResult}</Modal.Title>
             </Modal.Header>
-            <Modal.Body> <img src={MyImage} className=" w-75 h-30 rounded mx-auto d-block" /></Modal.Body>
+            <Modal.Body> <img src={MyImage} alt="thumbsupimg"className=" w-75 h-30 rounded mx-auto d-block" /></Modal.Body>
             <Modal.Footer><Button variant="primary" onClick={() => setCreateSuccess(false)}>Create again</Button></Modal.Footer>
           </Modal>
           :

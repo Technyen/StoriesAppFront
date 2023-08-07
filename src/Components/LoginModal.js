@@ -56,7 +56,7 @@ export default function LoginModal(props) {
         </Modal.Body>
         <Modal.Footer>
           <p className='text-danger'>{loginResult}</p>
-          <a href='' style={{ color: "red", cursor: 'pointer' }} onClick={() => props.setIsUserRegistered(false)}>Register</a>
+          <Button style={{ color: "red", cursor: 'pointer' }} onClick={() => props.setIsUserRegistered(false)}>Register</Button>
         </Modal.Footer>
       </Modal>
     </>

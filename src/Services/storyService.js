@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://localhost:7078/Stories";
+const baseURL = `${process.env.REACT_APP_BASEURL}/Stories`;
 
 export async function createStory(title, category, ageAppropiate, description) {
   try {

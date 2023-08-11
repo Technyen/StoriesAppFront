@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createStory } from '../Services/storyService';
 import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
@@ -11,15 +11,23 @@ export default function CreateStory() {
   const [ageAppropiate, setAgeAppropiate] = useState('')
   const [description, setDescription] = useState('')
   const [createResult, setCreateResult] = useState('')
-  const [isCreateSuccess, setCreateSuccess] = useState(false)
-  const { handleSubmit, register, formState: { errors } } = useForm();
+  const [isCreateSuccess, setIsCreateSuccess] = useState(false)
+  const { handleSubmit, register, reset, formState: { errors } } = useForm({
+    defaultValues: {
+      title: "",
+      category:"",
+      age:"",
+      description:""
+    },
+  });
 
   async function handleCreate() {
     var result = await createStory(title, category, ageAppropiate, description);
     setCreateResult(result);
     if (result === null) {
       setCreateResult("Story created!");
-      setCreateSuccess(true);
+      reset();
+      setIsCreateSuccess(true);
     }
   }
 
@@ -30,12 +38,11 @@ export default function CreateStory() {
       </div>
       {
         isCreateSuccess ?
-          <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal show={showModal} onHide={() => {setShowModal(false); setIsCreateSuccess(false);}}>
             <Modal.Header closeButton>
               <Modal.Title>{createResult}</Modal.Title>
             </Modal.Header>
             <Modal.Body> <img src={MyImage} alt="thumbsupimg"className=" w-75 h-30 rounded mx-auto d-block" /></Modal.Body>
-            <Modal.Footer><Button variant="primary" onClick={() => setCreateSuccess(false)}>Create again</Button></Modal.Footer>
           </Modal>
           :
           <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -47,7 +54,7 @@ export default function CreateStory() {
                 <Form.Group className="mb-3" >
                   <Form.Label>Title</Form.Label>
                   <Form.Control type="text"
-                    {...register("password", {
+                    {...register("title", {
                       required: " This field is required. ",
                       pattern: { message: "Title cannot exceed 100 characters" }
                     })}
@@ -59,7 +66,6 @@ export default function CreateStory() {
                     </Form.Text>
                   )}
                 </Form.Group>
-
                 <Form.Group className="mb-3" >
                   <Form.Label>Category</Form.Label>
                   <Form.Control type="text"
@@ -100,7 +106,7 @@ export default function CreateStory() {
               </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="primary" onClick={handleCreate}>Create</Button>
+              <Button variant="primary" type="submit"  onClick={handleCreate}>Create</Button>
             </Modal.Footer>
           </Modal>
       }

@@ -6,30 +6,23 @@ import { Form, Button, Modal } from 'react-bootstrap';
 
 export default function CreateStory() {
   const [showModal, setShowModal] = useState(false);
-  const [title, setTitle] = useState('')
-  const [category, setCategory] = useState('')
-  const [ageAppropiate, setAgeAppropiate] = useState('')
-  const [description, setDescription] = useState('')
   const [createResult, setCreateResult] = useState('')
   const [isCreateSuccess, setIsCreateSuccess] = useState(false)
-  const { handleSubmit, register, reset, formState: { errors } } = useForm({
-    defaultValues: {
-      title: "",
-      category:"",
-      age:"",
-      description:""
-    },
-  });
+  const { handleSubmit, register, reset, formState, formState: { errors } } = useForm();
 
-  async function handleCreate() {
-    var result = await createStory(title, category, ageAppropiate, description);
+  async function handleCreate(data) {
+    var result = await createStory(data.title, data.category, data.age, data.description);
     setCreateResult(result);
     if (result === null) {
       setCreateResult("Story created!");
-      reset();
       setIsCreateSuccess(true);
     }
   }
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset();
+    }
+  }, [formState, reset]);
 
   return (
     <>
@@ -38,19 +31,19 @@ export default function CreateStory() {
       </div>
       {
         isCreateSuccess ?
-          <Modal show={showModal} onHide={() => {setShowModal(false); setIsCreateSuccess(false);}}>
+          <Modal show={showModal} onHide={() => { setShowModal(false); setIsCreateSuccess(false); }}>
             <Modal.Header closeButton>
               <Modal.Title>{createResult}</Modal.Title>
             </Modal.Header>
-            <Modal.Body> <img src={MyImage} alt="thumbsupimg"className=" w-75 h-30 rounded mx-auto d-block" /></Modal.Body>
+            <Modal.Body> <img src={MyImage} alt="thumbsupimg" className=" w-75 h-30 rounded mx-auto d-block" /></Modal.Body>
           </Modal>
           :
           <Modal show={showModal} onHide={() => setShowModal(false)}>
             <Modal.Header closeButton>
               <Modal.Title>Create your story</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-              <Form onSubmit={handleSubmit(handleCreate)} >
+            <Form onSubmit={handleSubmit(handleCreate)} >
+              <Modal.Body>
                 <Form.Group className="mb-3" >
                   <Form.Label>Title</Form.Label>
                   <Form.Control type="text"
@@ -58,7 +51,6 @@ export default function CreateStory() {
                       required: " This field is required. ",
                       pattern: { message: "Title cannot exceed 100 characters" }
                     })}
-                    value={title} onChange={e => setTitle(e.target.value)}
                   />
                   {errors.title && (
                     <Form.Text className='text-danger'>
@@ -72,7 +64,6 @@ export default function CreateStory() {
                     {...register("category", {
                       required: " This field is required. "
                     })}
-                    value={category} onChange={e => setCategory(e.target.value)}
                   />
                   {errors.category && (
                     <Form.Text className='text-danger'>
@@ -86,7 +77,6 @@ export default function CreateStory() {
                     {...register("age", {
                       required: " This field is required. "
                     })}
-                    value={ageAppropiate} onChange={e => setAgeAppropiate(e.target.value)}
                   />
                   {errors.age && (
                     <Form.Text className='text-danger'>
@@ -94,20 +84,19 @@ export default function CreateStory() {
                     </Form.Text>
                   )}
                 </Form.Group>
-              </Form>
-              <Form.Group>
-                <Form.Label>Write your story here</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  style={{ height: '100px' }}
-                  {...register("description", { required: " This field is required. " })}
-                  value={description} onChange={e => setDescription(e.target.value)}
-                />
-              </Form.Group>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="primary" type="submit"  onClick={handleCreate}>Create</Button>
-            </Modal.Footer>
+                <Form.Group>
+                  <Form.Label>Write your story here</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    style={{ height: '100px' }}
+                    {...register("description", { required: " This field is required. " })}
+                  />
+                </Form.Group>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="primary" type="submit">Create</Button>
+              </Modal.Footer>
+            </Form>
           </Modal>
       }
     </>

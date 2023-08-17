@@ -9,7 +9,7 @@ export default function Header(props) {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="sticky-top bg-body-tertiary">
         <Container>
           <Navbar.Brand href="#home">CHILDREN STORIES</Navbar.Brand>
           <Button variant="primary" onClick={() => setShowIdentification(true)}>Login</Button>

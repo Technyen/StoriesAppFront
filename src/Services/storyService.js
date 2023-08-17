@@ -2,13 +2,13 @@ import axios from "axios";
 
 const baseURL = `${process.env.REACT_APP_BASEURL}/Stories`;
 
-export async function createStory(title, category, ageAppropiate, description) {
+export async function createStory(title, category, ageSuggested, description) {
   try {
     await axios.post(`${baseURL}/create`, {
-      title: title,
-      category: category,
-      ageAppropiate: ageAppropiate,
-      description: description
+      title,
+      category,
+      ageSuggested,
+      description
     });
     return null;
 
@@ -28,5 +28,26 @@ export async function getStories(){
     return result.data;
   } catch (error) {
     return "Unknown error";
+  }
+}
+
+
+export async function editStory(title, category, ageSuggested, description) {
+  try {
+    await axios.post(`${baseURL}/editStory`, {
+      title,
+      category,
+      ageSuggested,
+      description
+    });
+    return null;
+
+  } catch (error) {
+    if (error.response.status === 409) {
+      return "Story already save";
+    }
+    else {
+      return "Unknown error";
+    }
   }
 }

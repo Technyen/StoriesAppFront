@@ -4,9 +4,9 @@ const baseURL = `${process.env.REACT_APP_BASEURL}/Users`;
 export async function registerUser(name, email, password) {
   try {
     await axios.post(`${baseURL}/register`, {
-        name: name,
-        email: email,
-        password: password
+        name,
+        email,
+        password
       });
     return null;
 
@@ -23,8 +23,8 @@ export async function registerUser(name, email, password) {
 export async function loginUser(email, password) {
   try {
     await axios.post(`${baseURL}/login`, {
-      email: email,
-      password: password
+      email,
+      password
     });
     return null;
   } catch (error) {

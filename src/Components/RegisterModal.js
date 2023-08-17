@@ -4,14 +4,11 @@ import { useForm } from "react-hook-form";
 import { Button, Modal, Form } from 'react-bootstrap';
 
 export default function RegisterModal(props) {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [registerResult, setRegisterResult] = useState('')
   const { handleSubmit, register, formState: { errors } } = useForm();
 
-  async function handleOk() {
-    var result = await registerUser(name, email, password);
+  async function handleOk(data) {
+    var result = await registerUser(data.name, data.email, data.password);
     setRegisterResult(result);
     if (result === null) {
       props.setIsUserIdentified(true);
@@ -35,8 +32,7 @@ export default function RegisterModal(props) {
                   pattern: {
                     message: "name cannot exceed 20 characters"
                   }
-                })}
-                value={name} onChange={e => setName(e.target.value)} />
+                })} />
               {errors.name && (
                 <Form.Text className="text-danger" >{errors.name.message} </Form.Text>)}
             </Form.Group>
@@ -50,8 +46,7 @@ export default function RegisterModal(props) {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                     message: "invalid email address"
                   }
-                })}
-                value={email} onChange={e => setEmail(e.target.value)} />
+                })} />
               {errors.email && (
                 <Form.Text className="text-danger" >{errors.email.message} </Form.Text>)}
             </Form.Group>
@@ -65,7 +60,6 @@ export default function RegisterModal(props) {
                     message: " Password requirements: 8-20 characters, 1 number, 1 uppercase, 1 symbol."
                   }
                 })}
-                value={password} onChange={e => setPassword(e.target.value)}
               />
               {errors.password && (
                 <Form.Text className='text-danger'>

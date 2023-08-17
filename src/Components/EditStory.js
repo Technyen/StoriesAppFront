@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
-import { createStory } from '../Services/storyService';
+import { editStory } from '../Services/storyService';
 import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
 import { Form, Button, Modal } from 'react-bootstrap';
 
-export default function CreateStory() {
-  const [showModal, setShowModal] = useState(false);
+export default function EditStory({showModalEdit,setShowModalEdit}) {
   const [createResult, setCreateResult] = useState('')
   const [isCreateSuccess, setIsCreateSuccess] = useState(false)
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm();
 
   async function handleCreate(data) {
-    var result = await createStory(data.title, data.category, data.ageSuggested, data.description);
+    var result = await editStory(data.title, data.category, data.ageSuggested, data.description);
     setCreateResult(result);
-    if (result === null) {
-      setCreateResult("Story created!");
+    if (result !== null) {
+      setCreateResult("Story saved!");
       setIsCreateSuccess(true);
     }
   }
@@ -26,21 +25,18 @@ export default function CreateStory() {
 
   return (
     <>
-      <div className="d-grid gap-2 col-2 mx-auto">
-        <Button className="btn btn-primary mt-3" onClick={() => setShowModal(true)}>Create story</Button>
-      </div>
       {
         isCreateSuccess ?
-          <Modal show={showModal} onHide={() => { setShowModal(false); setIsCreateSuccess(false); }}>
+          <Modal show={showModalEdit} onHide={() => { setShowModalEdit(false); setIsCreateSuccess(false); }}>
             <Modal.Header closeButton>
               <Modal.Title>{createResult}</Modal.Title>
             </Modal.Header>
             <Modal.Body> <img src={MyImage} alt="thumbsupimg" className=" w-75 h-30 rounded mx-auto d-block" /></Modal.Body>
           </Modal>
           :
-          <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal show={showModalEdit} onHide={() => setShowModalEdit(false)}>
             <Modal.Header closeButton>
-              <Modal.Title>Create your story</Modal.Title>
+              <Modal.Title>Edit your story</Modal.Title>
             </Modal.Header>
             <Form onSubmit={handleSubmit(handleCreate)} >
               <Modal.Body>
@@ -94,7 +90,7 @@ export default function CreateStory() {
                 </Form.Group>
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="primary" type="submit">Create</Button>
+                <Button variant="primary" type="submit">Save</Button>
               </Modal.Footer>
             </Form>
           </Modal>

@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { getStories } from '../Services/storyService';
-import { Table } from 'react-bootstrap';
+import EditStory from './EditStory';
+import { Table, Button } from 'react-bootstrap';
 
 export default function StoryList() {
   const [stories, setStories] = useState([]);
+  const [showModalEdit, setShowModalEdit ] = useState(false);
 
   useEffect(() => {
     (async () => {
       const stories = await getStories();
       setStories(stories);
     })();
-
   }, [])
 
   const renderTable = () => {
@@ -19,28 +20,34 @@ export default function StoryList() {
         <tr key={index}>
           <td >{index}</td>
           <td>{story.title}</td>
-          <td>{story.ageAppropiate}</td>
+          <td>{story.ageSuggested}</td>
           <td>{story.category}</td>
+          <td>
+          <Button variant="secondary" className='m-2' onClick={() => setShowModalEdit(true)}>Edit</Button>
+            <Button variant='danger' className='m-2'>Delete</Button>
+            <Button variant='info' className='m-2'>View</Button>
+          </td>
         </tr>
       )
     })
   }
   return (
-    <div>
-
-      <h1 id="title">Story Table</h1>
+    <>
+      <h1 id="title">Stories</h1>
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
             <th>Title</th>
-            <th>Age appropiate</th>
+            <th>Age suggested</th>
             <th>Category</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>{renderTable()}</tbody>
       </Table>
+      <EditStory showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} />
 
-    </div>
+    </>
   )
 }

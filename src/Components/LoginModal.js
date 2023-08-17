@@ -4,13 +4,11 @@ import { useForm } from "react-hook-form";
 import { Modal, Form, Button } from 'react-bootstrap';
 
 export default function LoginModal(props) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [loginResult, setLoginResult] = useState('')
   const { handleSubmit, register, formState: { errors } } = useForm();
 
-  async function handleLogin() {
-    var result = await loginUser(email, password);
+  async function handleLogin(data) {
+    var result = await loginUser(data.email, data.password);
     setLoginResult(result);
     if (result === null) {
       props.setIsUserIdentified(true);
@@ -31,8 +29,7 @@ export default function LoginModal(props) {
               type="email" placeholder="Enter your email"
               {...register("email", {
                 required: "Please enter your email."
-              })}
-              value={email} onChange={e => setEmail(e.target.value)} />
+              })}/>
               {errors.email && (
               <Form.Text className="text-danger" >{errors.email.message} </Form.Text>)}
             </Form.Group>
@@ -42,9 +39,7 @@ export default function LoginModal(props) {
               <Form.Control type="password" placeholder="Password" 
               {...register("password", {
                 required: " This field is required. "
-              })}
-              value={password} onChange={e => setPassword(e.target.value)}
-              />
+              })}/>
               {errors.password && (
                 <Form.Text className='text-danger'>
                   {errors.password.message}

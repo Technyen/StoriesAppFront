@@ -9,10 +9,10 @@ export default function EditStory({showModalEdit,setShowModalEdit}) {
   const [isCreateSuccess, setIsCreateSuccess] = useState(false)
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm();
 
-  async function handleCreate(data) {
+  async function handleEdit(data) {
     var result = await editStory(data.title, data.category, data.ageSuggested, data.description);
     setCreateResult(result);
-    if (result !== null) {
+    if (result === null) {
       setCreateResult("Story saved!");
       setIsCreateSuccess(true);
     }
@@ -38,7 +38,7 @@ export default function EditStory({showModalEdit,setShowModalEdit}) {
             <Modal.Header closeButton>
               <Modal.Title>Edit your story</Modal.Title>
             </Modal.Header>
-            <Form onSubmit={handleSubmit(handleCreate)} >
+            <Form onSubmit={handleSubmit(handleEdit)} >
               <Modal.Body>
                 <Form.Group className="mb-3" >
                   <Form.Label>Title</Form.Label>

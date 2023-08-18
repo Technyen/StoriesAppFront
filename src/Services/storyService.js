@@ -34,7 +34,7 @@ export async function getStories(){
 
 export async function editStory(title, category, ageSuggested, description) {
   try {
-    await axios.post(`${baseURL}/editStory`, {
+    await axios.put(`${baseURL}/editStory`, {
       title,
       category,
       ageSuggested,

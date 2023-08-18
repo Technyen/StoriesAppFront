@@ -13,9 +13,8 @@ import FrogPrince from '../Images/frogPrince.png';
                 src={ThreePig}
                 alt="First slide"
               />
-               <Carousel.Caption>
-                <h2>The Three Little Pigs</h2>
-                <p>"The Three Little Pigs" is a fable about three pigs who build their houses of different materials. A Big Bad Wolf blows down the first two pigs' houses which are made of straw and sticks respectively, but is unable to destroy the third pig's house that is made of bricks.</p>
+               <Carousel.Caption >
+                <h2 className='text-white bg-dark'>The Three Little Pigs</h2>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -24,10 +23,8 @@ import FrogPrince from '../Images/frogPrince.png';
                 src={CapeRoja}
                 alt="Second slide"
               />
-              <Carousel.Caption>
-                <h2>Little Red Riding Hood</h2>
-                <p>Google users
-"Little Red Riding Hood" is a European fairy tale about a young girl and a sly wolf. Its origins can be traced back to several pre-17th century European folk tales. </p>
+              <Carousel.Caption >
+                <h2 className='text-white bg-dark'>Little Red Riding Hood</h2>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -36,11 +33,8 @@ import FrogPrince from '../Images/frogPrince.png';
                 src={FrogPrince}
                 alt="Third slide"
               />
-              <Carousel.Caption>
-                <h2>The Frog Prince</h2>
-                <p>
-                "The Frog Prince; or, Iron Henry" is a German fairy tale collected by the Brothers Grimm and published in 1812 in Grimm's Fairy Tales. 
-                </p>
+              <Carousel.Caption >
+                <h2 className='text-white bg-dark'>The Frog Prince</h2>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>

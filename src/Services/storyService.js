@@ -31,6 +31,15 @@ export async function getStories(){
   }
 }
 
+export async function getStory(title){
+  try {
+    const result = await axios.get(`${baseURL}/${title}`);
+    return result.data;
+  } catch (error) {
+    return "Unknown error";
+  }
+}
+
 
 export async function editStory(title, category, ageSuggested, description) {
   try {
@@ -43,8 +52,8 @@ export async function editStory(title, category, ageSuggested, description) {
     return null;
 
   } catch (error) {
-    if (error.response.status === 409) {
-      return "Story already save";
+    if (error.response.status === 404) {
+      return "Story not found";
     }
     else {
       return "Unknown error";

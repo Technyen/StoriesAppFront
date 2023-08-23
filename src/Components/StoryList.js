@@ -5,7 +5,8 @@ import { Table, Button } from 'react-bootstrap';
 
 export default function StoryList() {
   const [stories, setStories] = useState([]);
-  const [showModalEdit, setShowModalEdit ] = useState(false);
+  const [showModalEdit, setShowModalEdit] = useState(false);
+  const [title, setTitle]=useState('');
 
   useEffect(() => {
     (async () => {
@@ -23,7 +24,7 @@ export default function StoryList() {
           <td>{story.ageSuggested}</td>
           <td>{story.category}</td>
           <td>
-          <Button variant="secondary" className='m-2' onClick={() => setShowModalEdit(true)}>Edit</Button>
+            <Button variant="secondary" className='m-2' onClick={() => { setShowModalEdit(true);setTitle(story.title) }}>Edit</Button>
             <Button variant='danger' className='m-2'>Delete</Button>
             <Button variant='info' className='m-2'>View</Button>
           </td>
@@ -46,7 +47,7 @@ export default function StoryList() {
         </thead>
         <tbody>{renderTable()}</tbody>
       </Table>
-      <EditStory showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} />
+      <EditStory showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} title={title}/>
 
     </>
   )

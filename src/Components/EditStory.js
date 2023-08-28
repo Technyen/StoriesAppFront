@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { editStory, getStory } from '../Services/storyService';
+import { editStoryAsync, getStoryAsync } from '../Services/storyService';
 import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
 import { Form, Button, Modal } from 'react-bootstrap';
@@ -11,7 +11,7 @@ export default function EditStory({ showModalEdit, setShowModalEdit, title }) {
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm({values});
 
   async function handleEdit(data) {
-    var result = await editStory(data.title, data.category, data.ageSuggested, data.description);
+    var result = await editStoryAsync(data.title, data.category, data.ageSuggested, data.description);
     setCreateResult(result);
     if (result === null) {
       setCreateResult("Story saved!");
@@ -26,7 +26,7 @@ export default function EditStory({ showModalEdit, setShowModalEdit, title }) {
 
   useEffect(() => {
     async function FetchStory() {
-      let storyFound = await getStory(title);
+      let storyFound = await getStoryAsync(title);
       setValues(storyFound);
     }
     if (title !== "") {

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { getStories } from '../Services/storyService';
+import { getStoriesAsync } from '../Services/storyService';
 import EditStory from './EditStory';
 import { Table, Button } from 'react-bootstrap';
+import DeleteModal from './DeleteModal';
 
 export default function StoryList() {
   const [stories, setStories] = useState([]);
   const [showModalEdit, setShowModalEdit] = useState(false);
-  const [title, setTitle]=useState('');
+  const [title, setTitle] = useState('');
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const stories = await getStories();
+      const stories = await getStoriesAsync();
       setStories(stories);
     })();
   }, [])
@@ -24,8 +26,8 @@ export default function StoryList() {
           <td>{story.ageSuggested}</td>
           <td>{story.category}</td>
           <td>
-            <Button variant="secondary" className='m-2' onClick={() => { setShowModalEdit(true);setTitle(story.title) }}>Edit</Button>
-            <Button variant='danger' className='m-2'>Delete</Button>
+            <Button variant="secondary" className='m-2' onClick={() => { setShowModalEdit(true);setTitle(story.title)}}>Edit</Button>
+            <Button variant='danger' className='m-2' onClick={() => {setShowDeleteModal(true)}}>Delete</Button>
             <Button variant='info' className='m-2'>View</Button>
           </td>
         </tr>
@@ -48,6 +50,7 @@ export default function StoryList() {
         <tbody>{renderTable()}</tbody>
       </Table>
       <EditStory showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} title={title}/>
+      <DeleteModal showDeleteModal={showDeleteModal} setShowDeleteModal={setShowDeleteModal}/>
 
     </>
   )

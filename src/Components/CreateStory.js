@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createStory } from '../Services/storyService';
+import { createStoryAsync } from '../Services/storyService';
 import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
 import { Form, Button, Modal } from 'react-bootstrap';
@@ -11,7 +11,7 @@ export default function CreateStory() {
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm();
 
   async function handleCreate(data) {
-    var result = await createStory(data.title, data.category, data.ageSuggested, data.description);
+    var result = await createStoryAsync(data.title, data.category, data.age, data.description);
     setCreateResult(result);
     if (result === null) {
       setCreateResult("Story created!");

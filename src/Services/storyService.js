@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseURL = `${process.env.REACT_APP_BASEURL}/Stories`;
 
-export async function createStory(title, category, ageSuggested, description) {
+export async function createStoryAsync(title, category, ageSuggested, description) {
   try {
     await axios.post(`${baseURL}/create`, {
       title,
@@ -22,7 +22,7 @@ export async function createStory(title, category, ageSuggested, description) {
   }
 }
 
-export async function getStories(){
+export async function getStoriesAsync(){
   try {
     const result = await axios.get(`${baseURL}/getAll`);
     return result.data;
@@ -31,7 +31,7 @@ export async function getStories(){
   }
 }
 
-export async function getStory(title){
+export async function getStoryAsync(title){
   try {
     const result = await axios.get(`${baseURL}/${title}`);
     return result.data;
@@ -41,7 +41,7 @@ export async function getStory(title){
 }
 
 
-export async function editStory(title, category, ageSuggested, description) {
+export async function editStoryAsync(title, category, ageSuggested, description) {
   try {
     await axios.put(`${baseURL}/editStory`, {
       title,
@@ -59,4 +59,15 @@ export async function editStory(title, category, ageSuggested, description) {
       return "Unknown error";
     }
   }
+}
+
+export async function deleteStoryAsync(){
+  try {
+    const result = await axios.delete(`${baseURL}/delete`);
+    return result.data;
+
+  } catch (error) {
+    return "Unknown error";
+  }
+
 }

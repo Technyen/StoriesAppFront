@@ -2,30 +2,29 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
-import { deleteStoryAsync, getStoryAsync } from '../Services/storyService';
+import { deleteStoryAsync } from '../Services/storyService';
 
 
-export default function DeleteModal({ showDeleteModal, setShowDeleteModal }) {
+export default function DeleteModal({ showDeleteModal, setShowDeleteModal, storyId, deleteById}) {
     const [deleteResult, setDeleteResult] = useState('');
     const [isDeleteSuccess, setIsDeleteSuccess] = useState(false);
-    const [id, setId] = useState('');
 
-
-    async function handleRemove({id}) {
-        var response = await deleteStoryAsync(id);
-       
+    async function handleRemove() {
+        var response = await deleteStoryAsync(storyId);
         setDeleteResult(response);
-        if (response === null) {
+        if (response!==null ) {
             setDeleteResult("Delete successfully!");
             setIsDeleteSuccess(true);
         }
-      }
-  
+    }
+
+    
+
     return (
         <>
             {
                 isDeleteSuccess ?
-                    <Modal show={showDeleteModal} onHide={() => { setShowDeleteModal(false); setIsDeleteSuccess(false); }} id={id}>
+                    <Modal show={showDeleteModal} onHide={() => { setShowDeleteModal(false); setIsDeleteSuccess(false); }}>
                         <Modal.Header closeButton>
                             <Modal.Title>{deleteResult}</Modal.Title>
                         </Modal.Header>
@@ -41,7 +40,7 @@ export default function DeleteModal({ showDeleteModal, setShowDeleteModal }) {
                             <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
                                 Cancel
                             </Button>
-                            <Button variant="primary" onClick={handleRemove} id={id}>
+                            <Button variant="primary" onClick={()=>{handleRemove(); deleteById(storyId)}} >
                                 Ok
                             </Button>
                         </Modal.Footer>

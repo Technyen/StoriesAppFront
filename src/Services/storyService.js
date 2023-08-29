@@ -61,9 +61,9 @@ export async function editStoryAsync(title, category, ageSuggested, description)
   }
 }
 
-export async function deleteStoryAsync(){
+export async function deleteStoryAsync( storId ){
   try {
-    const result = await axios.delete(`${baseURL}/delete`);
+    const result = await axios.delete(`${baseURL}/${storId}`);
     return result.data;
 
   } catch (error) {

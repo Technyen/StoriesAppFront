@@ -9,7 +9,12 @@ export default function StoryList() {
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [title, setTitle] = useState('');
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-
+  const [storyId, setStoryId] = useState('');
+  const deleteById = id => {
+    setStories(oldValues => {
+      return oldValues.filter(element => element.id !== id)
+    })
+  }
   useEffect(() => {
     (async () => {
       const stories = await getStoriesAsync();
@@ -21,13 +26,13 @@ export default function StoryList() {
     return stories.map((story, index) => {
       return (
         <tr key={index}>
-          <td >{index}</td>
+          <td>{index}</td>
           <td>{story.title}</td>
           <td>{story.ageSuggested}</td>
           <td>{story.category}</td>
           <td>
             <Button variant="secondary" className='m-2' onClick={() => { setShowModalEdit(true);setTitle(story.title)}}>Edit</Button>
-            <Button variant='danger' className='m-2' onClick={() => {setShowDeleteModal(true)}}>Delete</Button>
+            <Button variant='danger' className='m-2' onClick={() => {setShowDeleteModal(true); setStoryId(story.id)}} >Delete</Button>
             <Button variant='info' className='m-2'>View</Button>
           </td>
         </tr>
@@ -50,7 +55,7 @@ export default function StoryList() {
         <tbody>{renderTable()}</tbody>
       </Table>
       <EditStory showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} title={title}/>
-      <DeleteModal showDeleteModal={showDeleteModal} setShowDeleteModal={setShowDeleteModal}/>
+      <DeleteModal showDeleteModal={showDeleteModal} setShowDeleteModal={setShowDeleteModal} storyId={storyId} deleteById={deleteById}/>
 
     </>
   )

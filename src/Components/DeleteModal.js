@@ -4,11 +4,14 @@ import Modal from 'react-bootstrap/Modal';
 import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { deleteStoryAsync } from '../Services/storyService';
 
-
-export default function DeleteModal({ showDeleteModal, setShowDeleteModal, storyId, deleteById}) {
+export default function DeleteModal({ showDeleteModal, setShowDeleteModal,setStories, storyId}) {
     const [deleteResult, setDeleteResult] = useState('');
     const [isDeleteSuccess, setIsDeleteSuccess] = useState(false);
-
+    const deleteById = id => {
+        setStories(stories => {
+        return stories.filter(story => story.id !== id)
+        })
+      }
     async function handleRemove() {
         var response = await deleteStoryAsync(storyId);
         setDeleteResult(response);
@@ -17,8 +20,6 @@ export default function DeleteModal({ showDeleteModal, setShowDeleteModal, story
             setIsDeleteSuccess(true);
         }
     }
-
-    
 
     return (
         <>

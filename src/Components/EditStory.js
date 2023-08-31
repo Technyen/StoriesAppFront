@@ -4,22 +4,25 @@ import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
 import { Form, Button, Modal } from 'react-bootstrap';
 
-export default function EditStory({ showModalEdit, setShowModalEdit, title }) {
+export default function EditStory({ showModalEdit, setShowModalEdit, setStories, title }) {
   const [createResult, setCreateResult] = useState('');
   const [isCreateSuccess, setIsCreateSuccess] = useState(false);
-  const [values, setValues]= useState({});
-  const { handleSubmit, register, reset, formState, formState: { errors } } = useForm({values});
+  const [story, setStory]= useState({});
+  const { handleSubmit, register, reset, formState, formState: { errors } } = useForm({values: story});
 
   async function handleEdit(data) {
     var result = await editStoryAsync(data.title, data.category, data.ageSuggested, data.description);
     setCreateResult(result);
+
     if (result === null) {
       setCreateResult("Story saved!");
       setIsCreateSuccess(true);
+      setStories(oldStories => oldStories.map(story =>story.title === data.title ? data : story));
     }
   }
-  useEffect(() => {
-    if (formState.isSubmitSuccessful) {
+
+useEffect(() => {
+  if (formState.isSubmitSuccessful) {
       reset();
     }
   }, [formState, reset]);
@@ -27,7 +30,7 @@ export default function EditStory({ showModalEdit, setShowModalEdit, title }) {
   useEffect(() => {
     async function FetchStory() {
       let storyFound = await getStoryAsync(title);
-      setValues(storyFound);
+      setStory(storyFound);
     }
     if (title !== "") {
       FetchStory();

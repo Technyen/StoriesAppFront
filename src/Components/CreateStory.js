@@ -4,18 +4,19 @@ import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
 import { Form, Button, Modal } from 'react-bootstrap';
 
-export default function CreateStory() {
+export default function CreateStory({stories,setStories}) {
   const [showModal, setShowModal] = useState(false);
   const [createResult, setCreateResult] = useState('')
   const [isCreateSuccess, setIsCreateSuccess] = useState(false)
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm();
 
   async function handleCreate(data) {
-    var result = await createStoryAsync(data.title, data.category, data.age, data.description);
+    var result = await createStoryAsync(data.title, data.category, data.ageSuggested, data.description);
     setCreateResult(result);
     if (result === null) {
       setCreateResult("Story created!");
       setIsCreateSuccess(true);
+      setStories([{id:data.id, title:data.title, category:data.category, ageSuggested:data.ageSuggested, description:data.description }, ...stories]);
     }
   }
   useEffect(() => {
@@ -46,7 +47,7 @@ export default function CreateStory() {
               <Modal.Body>
                 <Form.Group className="mb-3" >
                   <Form.Label>Title</Form.Label>
-                  <Form.Control type="text"
+                  <Form.Control type="text" 
                     {...register("title", {
                       required: " This field is required. ",
                       pattern: { message: "Title cannot exceed 100 characters" }
@@ -60,7 +61,7 @@ export default function CreateStory() {
                 </Form.Group>
                 <Form.Group className="mb-3" >
                   <Form.Label>Category</Form.Label>
-                  <Form.Control type="text"
+                  <Form.Control type="text" 
                     {...register("category", {
                       required: " This field is required. "
                     })}
@@ -73,7 +74,7 @@ export default function CreateStory() {
                 </Form.Group>
                 <Form.Group className="mb-3" >
                   <Form.Label>Age suggested</Form.Label>
-                  <Form.Control type="number" min="1" max="100"
+                  <Form.Control type="number"  min="1" max="100"
                     {...register("ageSuggested", {
                       required: " This field is required. "
                     })}
@@ -87,7 +88,7 @@ export default function CreateStory() {
                 <Form.Group>
                   <Form.Label>Write your story here</Form.Label>
                   <Form.Control
-                    as="textarea"
+                    as="textarea" 
                     style={{ height: '100px' }}
                     {...register("description", { required: " This field is required. " })}
                   />

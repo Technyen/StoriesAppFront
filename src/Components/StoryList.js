@@ -4,8 +4,7 @@ import EditStory from './EditStory';
 import { Table, Button } from 'react-bootstrap';
 import DeleteModal from './DeleteModal';
 
-export default function StoryList() {
-  const [stories, setStories] = useState([]);
+export default function StoryList({stories, setStories, setHideStory}) {
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [title, setTitle] = useState('');
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -29,7 +28,7 @@ export default function StoryList() {
           <td>
             <Button variant="secondary" className='m-2' onClick={() => { setShowModalEdit(true);setTitle(story.title)}}>Edit</Button>
             <Button variant='danger' className='m-2' onClick={() => {setShowDeleteModal(true); setStoryId(story.id)}} >Delete</Button>
-            <Button variant='info' className='m-2'>View</Button>
+            <Button variant='info' className='m-2'onClick={() => {setHideStory(true)}}>View</Button>
           </td>
         </tr>
       )

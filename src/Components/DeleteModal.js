@@ -15,7 +15,7 @@ export default function DeleteModal({ showDeleteModal, setShowDeleteModal,setSto
     async function handleRemove() {
         var response = await deleteStoryAsync(storyId);
         setDeleteResult(response);
-        if (response!==null ) {
+        if (response!== null ) {
             setDeleteResult("Delete successfully!");
             setIsDeleteSuccess(true);
         }

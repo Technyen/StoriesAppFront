@@ -1,6 +1,19 @@
 import {Modal} from 'react-bootstrap'
-export default function StoryContent({setHideStory}) {
-   
+import React, { useEffect} from 'react';
+import {getStoryAsync } from '../Services/storyService';
+
+export default function StoryContent({title, story, setStory, setHideStory}) {
+
+  useEffect(() => {
+    async function FetchStory() {
+      let storyFound = await getStoryAsync(title);
+      setStory(storyFound);
+    }
+    if (title !== "") {
+      FetchStory();
+    }
+  }, []);
+
     return (
         
         <div
@@ -8,12 +21,14 @@ export default function StoryContent({setHideStory}) {
       style={{ display: 'block', position: 'initial' }}
     >
       <Modal.Dialog  size="xl" >
-        <Modal.Header className='modal-header bg-info' onClick={()=> setHideStory(false)}closeButton>
-          <Modal.Title className='d-block text-center fw-semibold'>Title</Modal.Title>
+        <Modal.Header className='modal-header bg-info' onClick={()=> {setHideStory(false)}}closeButton>
+          <Modal.Title className='d-block text-center fw-semibold'>{story.Title}</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
-          <p>Modal body text goes here.</p>
+          <h1>{story.title}</h1>
+          <p>Category: {story.category}</p>
+          <p>Age suggested: {story.ageSuggested}</p><br/>
+          <p>{story.description}</p>
         </Modal.Body>
 
        

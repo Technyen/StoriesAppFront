@@ -4,10 +4,9 @@ import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
 import { Form, Button, Modal } from 'react-bootstrap';
 
-export default function EditStory({ showModalEdit, setShowModalEdit, setStories, title }) {
+export default function EditStory({ story, setStory, showModalEdit, setShowModalEdit, setStories, title }) {
   const [createResult, setCreateResult] = useState('');
   const [isCreateSuccess, setIsCreateSuccess] = useState(false);
-  const [story, setStory]= useState({});
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm({values: story});
 
   async function handleEdit(data) {
@@ -56,11 +55,8 @@ useEffect(() => {
               <Modal.Body>
                 <Form.Group className="mb-3" >
                   <Form.Label>Title</Form.Label>
-                  <Form.Control type="text"
-                    {...register("title", {
-                      required: " This field is required. ",
-                      pattern: { message: "Title cannot exceed 100 characters" }
-                    })}
+                  <Form.Control type="text" readOnly
+                    {...register("title")}
                   />
                   {errors.title && (
                     <Form.Text className='text-danger'>
@@ -71,9 +67,7 @@ useEffect(() => {
                 <Form.Group className="mb-3" >
                   <Form.Label>Category</Form.Label>
                   <Form.Control type="text"
-                    {...register("category", {
-                      required: " This field is required. "
-                    })}
+                    {...register("category")}
                   />
                   {errors.category && (
                     <Form.Text className='text-danger'>
@@ -84,9 +78,7 @@ useEffect(() => {
                 <Form.Group className="mb-3" >
                   <Form.Label>Age suggested</Form.Label>
                   <Form.Control type="number" min="1" max="100"
-                    {...register("ageSuggested", {
-                      required: " This field is required. "
-                    })}
+                    {...register("ageSuggested")}
                   />
                   {errors.ageSuggested && (
                     <Form.Text className='text-danger'>
@@ -99,7 +91,7 @@ useEffect(() => {
                   <Form.Control
                     as="textarea"
                     style={{ height: '100px' }}
-                    {...register("description", { required: " This field is required. " })}
+                    {...register("description")}
                   />
                 </Form.Group>
               </Modal.Body>

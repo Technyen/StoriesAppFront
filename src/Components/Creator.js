@@ -9,7 +9,8 @@ export default function Creator(props) {
   const [stories, setStories] = useState([]);
   const [showStory, setShowStory] = useState(false);
   const [story, setStory]= useState({});
-  const [title, setTitle] = useState('');
+  const [storyId, setStoryId] = useState('');
+
 
 
   return (
@@ -19,9 +20,9 @@ export default function Creator(props) {
           <>
             <CreateStory stories={stories} setStories={setStories} />
             {showStory?
-              <StoryContent title={title} setTitle={setTitle} story={story} setStory={setStory}   setHideStory={setShowStory}/>
+              <StoryContent storyId={storyId} story={story} setStory={setStory}   setHideStory={setShowStory}/>
               :
-              <StoryList title={title} setTitle={setTitle} story={story} setStory={setStory} stories={stories} setStories={setStories} setHideStory ={setShowStory}/>
+              <StoryList storyId={storyId} setStoryId={setStoryId} story={story} setStory={setStory} stories={stories} setStories={setStories} setHideStory ={setShowStory}/>
             }
             
           </>

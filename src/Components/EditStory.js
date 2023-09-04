@@ -4,7 +4,7 @@ import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
 import { Form, Button, Modal } from 'react-bootstrap';
 
-export default function EditStory({ story, setStory, showModalEdit, setShowModalEdit, setStories, title }) {
+export default function EditStory({ story, setStory, showModalEdit, setShowModalEdit, setStories, storyId }) {
   const [createResult, setCreateResult] = useState('');
   const [isCreateSuccess, setIsCreateSuccess] = useState(false);
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm({values: story});
@@ -16,7 +16,7 @@ export default function EditStory({ story, setStory, showModalEdit, setShowModal
     if (result === null) {
       setCreateResult("Story saved!");
       setIsCreateSuccess(true);
-      setStories(oldStories => oldStories.map(story =>story.title === data.title ? data : story));
+      setStories(oldStories => oldStories.map(story =>story.id === data.id ? data : story));
     }
   }
 
@@ -28,13 +28,13 @@ useEffect(() => {
 
   useEffect(() => {
     async function FetchStory() {
-      let storyFound = await getStoryAsync(title);
+      let storyFound = await getStoryAsync(storyId);
       setStory(storyFound);
     }
-    if (title !== "") {
+    if (storyId !== "") {
       FetchStory();
     }
-  }, [title]);
+  }, [storyId]);
 
   return (
     <>
@@ -55,7 +55,7 @@ useEffect(() => {
               <Modal.Body>
                 <Form.Group className="mb-3" >
                   <Form.Label>Title</Form.Label>
-                  <Form.Control type="text" readOnly
+                  <Form.Control type="text" 
                     {...register("title")}
                   />
                   {errors.title && (

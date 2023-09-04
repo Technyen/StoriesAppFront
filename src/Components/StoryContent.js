@@ -2,14 +2,14 @@ import {Modal} from 'react-bootstrap'
 import React, { useEffect} from 'react';
 import {getStoryAsync } from '../Services/storyService';
 
-export default function StoryContent({title, story, setStory, setHideStory}) {
+export default function StoryContent({storyId, story, setStory, setHideStory}) {
 
   useEffect(() => {
     async function FetchStory() {
-      let storyFound = await getStoryAsync(title);
+      let storyFound = await getStoryAsync(storyId);
       setStory(storyFound);
     }
-    if (title !== "") {
+    if (storyId !== "") {
       FetchStory();
     }
   }, []);
@@ -30,8 +30,6 @@ export default function StoryContent({title, story, setStory, setHideStory}) {
           <p>Age suggested: {story.ageSuggested}</p><br/>
           <p>{story.description}</p>
         </Modal.Body>
-
-       
       </Modal.Dialog>
     </div>
     );

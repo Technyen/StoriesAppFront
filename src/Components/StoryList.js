@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { getStoriesAsync, getStoryAsync } from '../Services/storyService';
+import { getStoriesAsync } from '../Services/storyService';
 import EditStory from './EditStory';
 import { Table, Button } from 'react-bootstrap';
 import DeleteModal from './DeleteModal';
 
-export default function StoryList({title, setTitle, story, setStory, stories, setStories, setHideStory}) {
+export default function StoryList({storyId, setStoryId, story, setStory, stories, setStories, setHideStory}) {
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [storyId, setStoryId] = useState('');
   
   useEffect(() => {
     (async () => {
@@ -24,9 +23,9 @@ export default function StoryList({title, setTitle, story, setStory, stories, se
           <td>{story.ageSuggested}</td>
           <td>{story.category}</td>
           <td>
-            <Button variant="secondary" className='m-2' onClick={() => { setShowModalEdit(true);setTitle(story.title)}}>Edit</Button>
+            <Button variant="secondary" className='m-2' onClick={() => { setShowModalEdit(true);setStoryId(story.id)}}>Edit</Button>
             <Button variant='danger' className='m-2' onClick={() => {setShowDeleteModal(true); setStoryId(story.id)}} >Delete</Button>
-            <Button variant='info' className='m-2'onClick={() => {setHideStory(true); setTitle(story.title)}}>View</Button>
+            <Button variant='info' className='m-2'onClick={() => {setHideStory(true); setStoryId(story.id)}}>View</Button>
           </td>
         </tr>
       )
@@ -46,7 +45,7 @@ export default function StoryList({title, setTitle, story, setStory, stories, se
         </thead>
         <tbody>{renderTable()}</tbody>
       </Table>
-      <EditStory showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} story ={story} setStory={setStory} title={title} setStories={setStories}/>
+      <EditStory showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} story ={story} setStory={setStory} storyId={storyId} setStories={setStories}/>
       <DeleteModal showDeleteModal={showDeleteModal} setShowDeleteModal={setShowDeleteModal} storyId={storyId} setStories={setStories}/>
     </>
   )

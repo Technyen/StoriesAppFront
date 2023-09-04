@@ -31,9 +31,9 @@ export async function getStoriesAsync(){
   }
 }
 
-export async function getStoryAsync(title){
+export async function getStoryAsync(id){
   try {
-    const result = await axios.get(`${baseURL}/${title}`);
+    const result = await axios.get(`${baseURL}/${id}`);
     return result.data;
   } catch (error) {
     return "Unknown error";

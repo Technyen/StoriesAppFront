@@ -12,7 +12,7 @@ export default function StoryContent({storyId, story, setStory, setHideStory}) {
     if (storyId !== "") {
       FetchStory();
     }
-  }, []);
+  }, [setStory, storyId]);
 
     return (
         

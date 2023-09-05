@@ -16,7 +16,7 @@ export default function CreateStory({stories,setStories}) {
     if (result === null) {
       setCreateResult("Story created!");
       setIsCreateSuccess(true);
-      setStories([{id:data.id, title:data.title, category:data.category, ageSuggested:data.ageSuggested, description:data.description }, ...stories]);
+      setStories([...stories, {id:data.id, title:data.title, category:data.category, ageSuggested:data.ageSuggested, description:data.description }]);
     }
   }
   useEffect(() => {

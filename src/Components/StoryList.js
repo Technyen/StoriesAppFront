@@ -13,7 +13,7 @@ export default function StoryList({storyId, setStoryId, story, setStory, stories
       const stories = await getStoriesAsync();
       setStories(stories);
     })();
-  }, [])
+  }, [setStories])
 
   const renderTable = () => {
     return stories.map((story, id) => {

@@ -41,9 +41,10 @@ export async function getStoryAsync(id){
 }
 
 
-export async function editStoryAsync(title, category, ageSuggested, description) {
+export async function editStoryAsync(id, title, category, ageSuggested, description) {
   try {
     await axios.put(`${baseURL}/editStory`, {
+      id,
       title,
       category,
       ageSuggested,

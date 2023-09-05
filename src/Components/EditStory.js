@@ -7,21 +7,21 @@ import { Form, Button, Modal } from 'react-bootstrap';
 export default function EditStory({ story, setStory, showModalEdit, setShowModalEdit, setStories, storyId }) {
   const [createResult, setCreateResult] = useState('');
   const [isCreateSuccess, setIsCreateSuccess] = useState(false);
-  const { handleSubmit, register, reset, formState, formState: { errors } } = useForm({values: story});
+  const { handleSubmit, register, reset, formState, formState: { errors } } = useForm({ values: story });
 
   async function handleEdit(data) {
-    var result = await editStoryAsync(data.title, data.category, data.ageSuggested, data.description);
+    var result = await editStoryAsync(data.id, data.title, data.category, data.ageSuggested, data.description);
     setCreateResult(result);
 
     if (result === null) {
       setCreateResult("Story saved!");
       setIsCreateSuccess(true);
-      setStories(oldStories => oldStories.map(story =>story.id === data.id ? data : story));
+      setStories(oldStories => oldStories.map(story => story.id === data.id ? data : story));
     }
   }
 
-useEffect(() => {
-  if (formState.isSubmitSuccessful) {
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
       reset();
     }
   }, [formState, reset]);
@@ -34,7 +34,7 @@ useEffect(() => {
     if (storyId !== "") {
       FetchStory();
     }
-  }, [storyId]);
+  }, [storyId, setStory]);
 
   return (
     <>
@@ -55,7 +55,7 @@ useEffect(() => {
               <Modal.Body>
                 <Form.Group className="mb-3" >
                   <Form.Label>Title</Form.Label>
-                  <Form.Control type="text" 
+                  <Form.Control type="text"
                     {...register("title")}
                   />
                   {errors.title && (

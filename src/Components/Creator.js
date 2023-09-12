@@ -10,17 +10,17 @@ export default function Creator(props) {
   const [showStory, setShowStory] = useState(false);
   const [story, setStory]= useState({});
   const [storyId, setStoryId] = useState('');
-
-
+  const [image, setImage] = useState(null);
+  
 
   return (
     <>
       {
         props.isUserIdentified ?
           <>
-            <CreateStory stories={stories} setStories={setStories} />
+            <CreateStory stories={stories} setStories={setStories} image={image} setImage={setImage}/>
             {showStory?
-              <StoryContent storyId={storyId} story={story} setStory={setStory}   setHideStory={setShowStory}/>
+              <StoryContent storyId={storyId} story={story} setStory={setStory} setHideStory={setShowStory} image={image} setImage={setImage}/>
               :
               <StoryList storyId={storyId} setStoryId={setStoryId} story={story} setStory={setStory} stories={stories} setStories={setStories} setHideStory ={setShowStory}/>
             }

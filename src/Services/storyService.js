@@ -2,14 +2,16 @@ import axios from "axios";
 
 const baseURL = `${process.env.REACT_APP_BASEURL}/Stories`;
 
-export async function createStoryAsync(title, category, ageSuggested, description) {
+export async function createStoryAsync(title, category, ageSuggested, description, formFile) {
   try {
-    await axios.post(`${baseURL}/create`, {
-      title,
-      category,
-      ageSuggested,
-      description
-    });
+    let formData = new FormData();
+    formData.append("title", title);
+    formData.append("category", category);
+    formData.append("ageSuggested", ageSuggested);
+    formData.append("description", description);
+    formData.append("formFile", formFile[0]);
+
+    await axios.post(`${baseURL}/create`, formData);
     return null;
 
   } catch (error) {
@@ -22,7 +24,7 @@ export async function createStoryAsync(title, category, ageSuggested, descriptio
   }
 }
 
-export async function getStoriesAsync(){
+export async function getStoriesAsync() {
   try {
     const result = await axios.get(`${baseURL}/getAll`);
     return result.data;
@@ -31,7 +33,7 @@ export async function getStoriesAsync(){
   }
 }
 
-export async function getStoryAsync(id){
+export async function getStoryAsync(id) {
   try {
     const result = await axios.get(`${baseURL}/${id}`);
     return result.data;
@@ -62,7 +64,7 @@ export async function editStoryAsync(id, title, category, ageSuggested, descript
   }
 }
 
-export async function deleteStoryAsync( storId ){
+export async function deleteStoryAsync(storId) {
   try {
     const result = await axios.delete(`${baseURL}/${storId}`);
     return result.data;

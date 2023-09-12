@@ -2,7 +2,8 @@ import {Modal} from 'react-bootstrap'
 import React, { useEffect} from 'react';
 import {getStoryAsync } from '../Services/storyService';
 
-export default function StoryContent({storyId, story, setStory, setHideStory}) {
+
+export default function StoryContent({storyId, story, setStory, setHideStory, image, setImage}) {
 
   useEffect(() => {
     async function FetchStory() {
@@ -28,6 +29,7 @@ export default function StoryContent({storyId, story, setStory, setHideStory}) {
           <h1>{story.title}</h1>
           <p>Category: {story.category}</p>
           <p>Age suggested: {story.ageSuggested}</p><br/>
+          <img alt="preview" src={image}/>
           <p>{story.description}</p>
         </Modal.Body>
       </Modal.Dialog>

@@ -4,14 +4,17 @@ import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
 import { Form, Button, Modal } from 'react-bootstrap';
 
-export default function CreateStory({stories,setStories}) {
+export default function CreateStory({ stories, setStories, image, setImage }) {
   const [showModal, setShowModal] = useState(false);
   const [createResult, setCreateResult] = useState('')
-  const [isCreateSuccess, setIsCreateSuccess] = useState(false)
+  const [isCreateSuccess, setIsCreateSuccess] = useState(false);
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm();
+  const onImageChange = (event) => {
+      setImage(URL.createObjectURL(event.target.files[0]));
+  }
 
   async function handleCreate(data) {
-    var result = await createStoryAsync(data.title, data.category, data.ageSuggested, data.description);
+    var result = await createStoryAsync(data.title, data.category, data.ageSuggested, data.description, data.file);
     setCreateResult(result);
     if (result === null) {
       setCreateResult("Story created!");
@@ -85,6 +88,11 @@ export default function CreateStory({stories,setStories}) {
                     </Form.Text>
                   )}
                 </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Upload you image</Form.Label>
+                  <Form.Control type="file" onChange={onImageChange} {...register("file", { required: " This field is required. " })}/>
+                  <img alt="preview" src={image}/>
+                </Form.Group>
                 <Form.Group>
                   <Form.Label>Write your story here</Form.Label>
                   <Form.Control
@@ -95,7 +103,7 @@ export default function CreateStory({stories,setStories}) {
                 </Form.Group>
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="primary" type="submit">Create</Button>
+                <Button variant="primary" type="submit" >Create</Button>
               </Modal.Footer>
             </Form>
           </Modal>

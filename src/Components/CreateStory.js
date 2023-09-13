@@ -4,14 +4,12 @@ import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
 import { Form, Button, Modal } from 'react-bootstrap';
 
-export default function CreateStory({ stories, setStories, image, setImage }) {
+export default function CreateStory({ stories, setStories}) {
   const [showModal, setShowModal] = useState(false);
   const [createResult, setCreateResult] = useState('')
   const [isCreateSuccess, setIsCreateSuccess] = useState(false);
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm();
-  const onImageChange = (event) => {
-      setImage(URL.createObjectURL(event.target.files[0]));
-  }
+  
 
   async function handleCreate(data) {
     var result = await createStoryAsync(data.title, data.category, data.ageSuggested, data.description, data.file);
@@ -19,7 +17,7 @@ export default function CreateStory({ stories, setStories, image, setImage }) {
     if (result === null) {
       setCreateResult("Story created!");
       setIsCreateSuccess(true);
-      setStories([...stories, {id:data.id, title:data.title, category:data.category, ageSuggested:data.ageSuggested, description:data.description }]);
+      setStories([...stories, {id:data.id, title:data.title, category:data.category, ageSuggested:data.ageSuggested, description:data.description, file:data.file }]);
     }
   }
   useEffect(() => {
@@ -90,8 +88,8 @@ export default function CreateStory({ stories, setStories, image, setImage }) {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Upload you image</Form.Label>
-                  <Form.Control type="file" onChange={onImageChange} {...register("file", { required: " This field is required. " })}/>
-                  <img alt="preview" src={image}/>
+                  <Form.Control type="file" {...register("file")}/>
+                  <img alt="preview" />
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Write your story here</Form.Label>

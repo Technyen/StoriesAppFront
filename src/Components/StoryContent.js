@@ -3,7 +3,7 @@ import React, { useEffect} from 'react';
 import {getStoryAsync } from '../Services/storyService';
 
 
-export default function StoryContent({storyId, story, setStory, setHideStory, image, setImage}) {
+export default function StoryContent({storyId, story, setStory, setHideStory, image}) {
 
   useEffect(() => {
     async function FetchStory() {

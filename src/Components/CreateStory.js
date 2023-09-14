@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import { createStoryAsync } from '../Services/storyService';
+import { createStoryAsync, getStoryAsync } from '../Services/storyService';
 import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
 import { Form, Button, Modal } from 'react-bootstrap';
 
-export default function CreateStory({ stories, setStories}) {
+export default function CreateStory({ stories, setStories, story}) {
   const [showModal, setShowModal] = useState(false);
   const [createResult, setCreateResult] = useState('')
   const [isCreateSuccess, setIsCreateSuccess] = useState(false);
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm();
-  
 
   async function handleCreate(data) {
     var result = await createStoryAsync(data.title, data.category, data.ageSuggested, data.description, data.file);
@@ -17,7 +16,7 @@ export default function CreateStory({ stories, setStories}) {
     if (result === null) {
       setCreateResult("Story created!");
       setIsCreateSuccess(true);
-      setStories([...stories, {id:data.id, title:data.title, category:data.category, ageSuggested:data.ageSuggested, description:data.description, file:data.file }]);
+      setStories([...stories, {id:data.id, title:data.title, category:data.category, ageSuggested:data.ageSuggested, description:data.description, file:data.file, imageUrl:data.imageUrl }]);
     }
   }
   useEffect(() => {
@@ -88,8 +87,8 @@ export default function CreateStory({ stories, setStories}) {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Upload you image</Form.Label>
-                  <Form.Control type="file" {...register("file")}/>
-                  <img alt="preview" />
+                  <Form.Control type="file" accept='image/*' {...register("file")}/>
+                  <img alt="preview" className='img-fluid' src={story.imageUrl}/>
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Write your story here</Form.Label>

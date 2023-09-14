@@ -88,8 +88,8 @@ export default function EditStory({ story, setStory, showModalEdit, setShowModal
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Upload you image</Form.Label>
-                  <Form.Control type="file" {...register("file")}/>
-                  <img alt="preview"/>
+                  <Form.Control type="file" accept='image/*' {...register("file")}/>
+                  <img alt="preview" />
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Write your story here</Form.Label>

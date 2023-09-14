@@ -42,7 +42,6 @@ export async function getStoryAsync(id) {
   }
 }
 
-
 export async function editStoryAsync(id, title, category, ageSuggested, description, formFile) {
   try {
     let formData = new FormData();
@@ -52,7 +51,7 @@ export async function editStoryAsync(id, title, category, ageSuggested, descript
     formData.append("ageSuggested", ageSuggested);
     formData.append("description", description);
     formData.append("formFile", formFile[0]);
-    
+
     await axios.put(`${baseURL}/editStory`, formData);
     return null;
 

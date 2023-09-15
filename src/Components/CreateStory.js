@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
-import { createStoryAsync, getStoryAsync } from '../Services/storyService';
+import { createStoryAsync } from '../Services/storyService';
 import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
 import { Form, Button, Modal } from 'react-bootstrap';
 
-export default function CreateStory({ stories, setStories, story}) {
+export default function CreateStory({ stories, setStories, story }) {
   const [showModal, setShowModal] = useState(false);
   const [createResult, setCreateResult] = useState('')
   const [isCreateSuccess, setIsCreateSuccess] = useState(false);
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm();
+  const [file, setFile] = useState(null);
+  async function onImageChange(e) {
+    setFile(e.target.files[0]);
+
+  }
 
   async function handleCreate(data) {
     var result = await createStoryAsync(data.title, data.category, data.ageSuggested, data.description, data.file);
@@ -32,7 +37,7 @@ export default function CreateStory({ stories, setStories, story}) {
       </div>
       {
         isCreateSuccess ?
-          <Modal show={showModal} onHide={() => { setShowModal(false); setIsCreateSuccess(false); }}>
+          <Modal show={showModal} onHide={() => { setShowModal(false); setIsCreateSuccess(false); setFile('')}}>
             <Modal.Header closeButton>
               <Modal.Title>{createResult}</Modal.Title>
             </Modal.Header>
@@ -87,8 +92,8 @@ export default function CreateStory({ stories, setStories, story}) {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Upload you image</Form.Label>
-                  <Form.Control type="file" accept='image/*' {...register("file")}/>
-                  <img alt="preview" className='img-fluid' src={story.imageUrl}/>
+                  <Form.Control type="file" accept='image/*' {...register("file", { onChange: onImageChange})}/>
+                  <img src={file? URL.createObjectURL(file) : null} alt={file? file.name : null} className='img-fluid p-3'/>
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Write your story here</Form.Label>

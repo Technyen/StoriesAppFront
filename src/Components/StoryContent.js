@@ -29,7 +29,7 @@ export default function StoryContent({storyId, story, setStory, setHideStory}) {
           <h1>{story.title}</h1>
           <p>Category: {story.category}</p>
           <p>Age suggested: {story.ageSuggested}</p><br/>
-          <img alt="preview" className='img-fluid' src={story.imageUrl}/>
+          <img alt="preview" className='img-fluid mx-auto d-block' src={story.imageUrl}/>
           <p>{story.description}</p>
         </Modal.Body>
       </Modal.Dialog>

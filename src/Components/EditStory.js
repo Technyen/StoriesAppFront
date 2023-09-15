@@ -8,7 +8,8 @@ export default function EditStory({ story, setStory, showModalEdit, setShowModal
   const [createResult, setCreateResult] = useState('');
   const [isCreateSuccess, setIsCreateSuccess] = useState(false);
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm({ values: story });
-
+  
+ 
   async function handleEdit(data) {
     var result = await editStoryAsync(data.id, data.title, data.category, data.ageSuggested, data.description, data.file);
     setCreateResult(result);
@@ -89,7 +90,7 @@ export default function EditStory({ story, setStory, showModalEdit, setShowModal
                 <Form.Group className="mb-3">
                   <Form.Label>Upload you image</Form.Label>
                   <Form.Control type="file" accept='image/*' {...register("file")}/>
-                  <img alt="preview" />
+                  <img alt="preview" className="img-fluid p-3" src={story.imageUrl} />
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Write your story here</Form.Label>

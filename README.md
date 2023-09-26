@@ -1,9 +1,11 @@
 # **DEMO Stories for Kids**
 https://storiesapp202307.netlify.app/
 
-## **Index** 📝
+Backend link:
 
-The topics covered in the project
+https://github.com/Technyen/StoriesAppBack
+
+## **Index** 📝
 - [Objetive](#Objetive)
 - [Backend Part](#Backend)
   * Onion Architecture
@@ -17,7 +19,6 @@ The topics covered in the project
   * Azure Blob Storage
   * CI/CD
   * OpenID Connect
-  
 - [Frontend Part](#Frontend)
   * Create React App
   * Bootstrap
@@ -26,8 +27,7 @@ The topics covered in the project
   * React Hook Form
   * Netlify
 
-
-## Objetive 💡<a name="Objetive"></a>
+## Introduction 🔊<a name="Objetive"></a>
 This project was created mainly for children’s stories. The idea is to be able to create your own stories and be able to share them with your children or loved ones.
 
 To carry out this project, I utilized Azure DevOps to organize the workload and plan out Epics, Features, and daily User Stories for coding, spikes, and design tasks. Also, I used Scrum to address my project as this working methodology helped my workflow be more agile, productive, and efficient. For planning we set up  the Sprint’s goals and essential tasks, evaluated and estimated the time they would take and how I would complete them. For example, before starting this project, I started to learn the C# language, React framework, and other technologies or libraries that are related, and we estimated the expected time to complete it. 
@@ -74,11 +74,13 @@ I used GitHub pipelines **`CI/CD`** solution to get more reliable PRs delivered 
 
 I used **`OpenID Connect`** with the pipelines because it simplifies the way to verify the identity of the deployment pipeline (GitHub Actions) based on the authentication performed by the authorization server (Azure). It removes the responsibility of setting, storing, and managing passwords which is frequently associated with credential-based data breaches. 
 
-## **The Frontend part 💻**<a name="Frontend"></a>
+## **The Frontend part 🖼️**<a name="Frontend"></a>
+<img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/169e43cd-8319-4513-8ea4-771a45f0b40c">
+
 
 The webpage consists of a header, a carrousel, and dedicated components. All the front-end logic was based on the end-user experience and the flow is divided into two available modes, creator and reader. When the creator logs in, the app calls the backend services, for example, the get method to retrieve all stories (getStoryAsync) and show them as a list. The creator can manage the story, such as creating, modifying, or deleting it. The reader only has access to view the stories created by the creator. Each story is shown using the StoryContent component with the story and an image to illustrate.
 
-I used the **`create-react-app`** framework which allowed me to create and **`bootstrap`** the **`React`** project rapidly. Something nice to point out is the modularity of components as I didn’t have to write similar code multiple times for similar parts or if in the future I need to change any particular part, it should not affect other parts of my application. Also, this framework wraps all of the required dependencies needed. One of the dependencies that was very useful was the included linter that helped me scan my code and flag any code errors. For debugging errors, I often started by thinking out all possible causes and used breakpoints here and there to test each of these hypotheses, until the ultimate root cause was found. 
+I used the **`create-react-app`** framework which allowed me to initallize the **`React`** project rapidly. Something nice to point out is the modularity of components as I didn’t have to write similar code multiple times for similar parts or if in the future I need to change any particular part, it should not affect other parts of my application. Also, this framework wraps all of the required dependencies needed. One of the dependencies that was very useful was the included linter that helped me scan my code and flag any code errors. For debugging errors, I often started by thinking out all possible causes and used breakpoints here and there to test each of these hypotheses, until the ultimate root cause was found. 
 
 For the aesthetics of the components, I utilized the **`React-Bootstrap`** library because creates React components for me, I just needed to specify properties and hooks in the component, and the library did the rest of the abstraction.  Some components work with backend service, so I used Axios which simplified the communication with the API backend to get our payloads. For components such as LoginModal, RegisterModal, and CreateStory modal I employed **`React Hook Form`** tool to validate forms. With this library,  I was able to handle all the input states and their changes, ensuring that input was validated when the form was submitted.
 

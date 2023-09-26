@@ -58,6 +58,8 @@ I used a constructor **`dependency injection`** design pattern to make the class
 
 **`Xunit`** was used to unit test some methods as a proof of concept and it is planned to have a code coverage of all the code. **`Moq`** was involved in the creation of mock objects to control their behavior and outcomes. Each test was organized following the recommendations: the arrange part where I prepared the variables, the methods, or the services that need to be used to test. The act part, where I executed the method with all the required parameters, and finally, the assert where I validated if the outcome was expected or not.
 
+<img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/1ec3490a-ee38-46d8-95a5-1a9c136c0513">
+
 For each entity, its respective **`CRUD`** controller was created, in turn, this API is connected to the services of each entity and then connects to the infrastructure layer consisting of COSMOS DB and BlobStorage services. I used **`Swagger`** to interact with the API and try out the endpoint calls easily. All code of the project was developed and debugged with **`Visual Studio 2022`**. 
 
 **AZURE SERVICES**
@@ -75,6 +77,7 @@ I used GitHub pipelines **`CI/CD`** solution to get more reliable PRs delivered 
 I used **`OpenID Connect`** with the pipelines because it simplifies the way to verify the identity of the deployment pipeline (GitHub Actions) based on the authentication performed by the authorization server (Azure). It removes the responsibility of setting, storing, and managing passwords which is frequently associated with credential-based data breaches. 
 
 ## **The Frontend part 🖼️**<a name="Frontend"></a>
+
 <img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/169e43cd-8319-4513-8ea4-771a45f0b40c">
 
 

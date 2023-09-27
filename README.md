@@ -62,7 +62,7 @@ I used a constructor **`dependency injection`** design pattern to make the class
 
 For each entity, its respective **`CRUD`** controller was created, in turn, this API is connected to the services of each entity and then connects to the infrastructure layer consisting of COSMOS DB and BlobStorage services. I used **`Swagger`** to interact with the API and try out the endpoint calls easily. All code of the project was developed and debugged with **`Visual Studio 2022`**. 
 
-**AZURE SERVICES**
+**Azure services**
 
 I authenticated all Azure services with **`passwordless`** authentication because it is considered a more secure alternative than using bare passwords. The Azure identity library in this regard, provides token authentication and allowed me to authenticate to Azure resources with the application locally in Visual Studio and to authenticate the API in Azure with DefaultAzureCredential and Role Based Access control. 
 

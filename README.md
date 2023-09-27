@@ -72,6 +72,9 @@ I authenticated all Azure services with **`passwordless`** authentication becaus
 
 **Deployment**
 
+<img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/1d24d44c-b910-46c4-8c1c-ff12dd36dd8b">
+
+
 I used GitHub pipelines **`CI/CD`** solution to get more reliable PRs delivered and to automate the deployment workflow of my backend API. I created two pipelines, one that gets triggered with every push to a branch involved in a PR so the reviewer could validate that the project was built and the tests passed. This streamlined the PR process and reduced it to just reviewing the code and feedback discussion. The other pipeline is meant to execute the same building and testing steps plus the deployment phase to production only after the PR is approved and merged into the master branch.
 
 I used **`OpenID Connect`** with the pipelines because it simplifies the way to verify the identity of the deployment pipeline (GitHub Actions) based on the authentication performed by the authorization server (Azure). It removes the responsibility of setting, storing, and managing passwords which is frequently associated with credential-based data breaches. 

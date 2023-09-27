@@ -38,6 +38,9 @@ The Project is separated into 2 repositories, which are a front-end React web ap
 
 ## **The backend part 💻**<a name="Backend"></a>
 
+<img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/c2433f8f-fad9-48f8-b010-4683219c3735">
+
+
 I used an **`Onion Architecture`** because it enables the layers to have a separation of concerns so they are not tightly coupled. The goal was to keep external dependencies as far away from the rest of the layers as possible. Also, all code depends on a domain model with layers connected by interfaces that offer better maintainability, and easier testability, and the entire code can be written for distinct levels without affecting the others. I split the code into 4 layers:
 
 - Domain layer: Story, User

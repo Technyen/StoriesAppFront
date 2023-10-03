@@ -8,10 +8,13 @@ export default function EditStory({ story, setStory, showModalEdit, setShowModal
   const [createResult, setCreateResult] = useState('');
   const [isCreateSuccess, setIsCreateSuccess] = useState(false);
   const { handleSubmit, register, reset, formState, formState: { errors } } = useForm({ values: story });
-  
+  const [file, setFile] = useState(null);
+  async function onImageChange(e) {
+    setFile(e.target.files[0]);
+  }
  
   async function handleEdit(data) {
-    var result = await editStoryAsync(data.id, data.title, data.category, data.ageSuggested, data.description, data.file);
+    var result = await editStoryAsync(data.id, data.title, data.category, data.ageSuggested, data.description, data.file, data.imageUrl);
     setCreateResult(result);
 
     if (result === null) {
@@ -89,8 +92,8 @@ export default function EditStory({ story, setStory, showModalEdit, setShowModal
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Upload you image</Form.Label>
-                  <Form.Control type="file" accept='image/*' {...register("file")}/>
-                  <img alt="preview" className="img-fluid p-3" src={story.imageUrl} />
+                  <Form.Control type="file" accept='image/*' {...register("file", { onChange: onImageChange})}/>
+                  <img alt="preview" className="img-fluid p-3" src={file? URL.createObjectURL(file) : story.imageUrl} />
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Write your story here</Form.Label>

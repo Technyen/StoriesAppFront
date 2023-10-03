@@ -3,6 +3,7 @@ import StoryList from "./StoryList";
 import Identification from "./Identification";
 import { useState } from 'react';
 import StoryContent from "./StoryContent";
+import CardStory from "./CardStory";
 
 export default function Creator(props) {
   const [showIdentification, setShowIdentification] = useState(true);
@@ -16,7 +17,7 @@ export default function Creator(props) {
       {
         props.isUserIdentified ?
           <>
-            <CreateStory stories={stories} setStories={setStories} story={story} />
+            <CreateStory stories={stories} setStories={setStories} />
             {showStory?
               <StoryContent storyId={storyId} story={story} setStory={setStory} setHideStory={setShowStory}/>
               :
@@ -27,7 +28,7 @@ export default function Creator(props) {
           :
           showIdentification ?
             <Identification setShowIdentification={setShowIdentification} isUserIdentified={props.isUserIdentified} setIsUserIdentified={props.setIsUserIdentified} isUserReader={props.isUserReader} />
-            : null
+            : <CardStory story={story} setStory={setStory} stories={stories} setStories={setStories}/>
       }
     </>
   );

@@ -4,7 +4,7 @@ import MyImage from "../Images/thumbs_up-0klWsZLRO-transformed.png";
 import { useForm } from "react-hook-form";
 import { Form, Button, Modal } from 'react-bootstrap';
 
-export default function CreateStory({ stories, setStories, story }) {
+export default function CreateStory({ stories, setStories }) {
   const [showModal, setShowModal] = useState(false);
   const [createResult, setCreateResult] = useState('')
   const [isCreateSuccess, setIsCreateSuccess] = useState(false);
@@ -12,7 +12,6 @@ export default function CreateStory({ stories, setStories, story }) {
   const [file, setFile] = useState(null);
   async function onImageChange(e) {
     setFile(e.target.files[0]);
-
   }
 
   async function handleCreate(data) {

@@ -42,7 +42,7 @@ export async function getStoryAsync(id) {
   }
 }
 
-export async function editStoryAsync(id, title, category, ageSuggested, description, formFile) {
+export async function editStoryAsync(id, title, category, ageSuggested, description, formFile, imageUrl) {
   try {
     let formData = new FormData();
     formData.append("id",id);
@@ -50,6 +50,7 @@ export async function editStoryAsync(id, title, category, ageSuggested, descript
     formData.append("category", category);
     formData.append("ageSuggested", ageSuggested);
     formData.append("description", description);
+    formData.append("imageUrl",imageUrl)
     formData.append("formFile", formFile[0]);
 
     await axios.put(`${baseURL}/editStory`, formData);

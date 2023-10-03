@@ -1,6 +1,16 @@
 # DEMO
 https://storiesapp202307.netlify.app/
 
+This project revolves around creating captivating stories for children.
+Its primary objective is to empower parents to craft their own unique tales and easily share 
+them with others. These stories can encompass educational content, innovative narratives, or even experimental storytelling approaches.
+
+For the project's fronted, I have employed React.js, while the backend is developed using C#.
+This project leverages the automation capabilities of Netlify for frontend deployment and Git Actions for 
+backend deployment. This approach not only streamlines our development and deployment processes but also 
+ensures that our web application remains highly available, secure and up-to-date without manual intervention.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const baseURL = `${process.env.API_BASEURL}/Users`;
+const baseEndpoint = `${process.env.API_BASEURL}/Users`;
 export async function registerUser(name, email, password) {
   try {
-    await axios.post(`${baseURL}/register`, {
+    await axios.post(`${baseEndpoint}/register`, {
         name,
         email,
         password
@@ -22,7 +22,7 @@ export async function registerUser(name, email, password) {
 
 export async function loginUser(email, password) {
   try {
-    await axios.post(`${baseURL}/login`, {
+    await axios.post(`${baseEndpoint}/login`, {
       email,
       password
     });

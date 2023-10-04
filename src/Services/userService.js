@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseEndpoint = `${process.env.API_BASEURL}/Users`;
+const baseEndpoint = "/Users";
 export async function registerUser(name, email, password) {
   try {
     await axios.post(`${baseEndpoint}/register`, {

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = `${process.env.API_BASEURL}/Stories`;
+const baseEndpoint = "/Stories";
 
 export async function createStoryAsync(title, category, ageSuggested, description, formFile) {
   try {
@@ -11,7 +11,7 @@ export async function createStoryAsync(title, category, ageSuggested, descriptio
     formData.append("description", description);
     formData.append("formFile", formFile[0]);
 
-    await axios.post(`${baseURL}/create`, formData);
+    await axios.post(`${baseEndpoint}/create`, formData);
     return null;
 
   } catch (error) {
@@ -26,7 +26,7 @@ export async function createStoryAsync(title, category, ageSuggested, descriptio
 
 export async function getStoriesAsync() {
   try {
-    const result = await axios.get(`${baseURL}/getAll`);
+    const result = await axios.get(`${baseEndpoint}/getAll`);
     return result.data;
   } catch (error) {
     return "Unknown error";
@@ -35,7 +35,7 @@ export async function getStoriesAsync() {
 
 export async function getStoryAsync(id) {
   try {
-    const result = await axios.get(`${baseURL}/${id}`);
+    const result = await axios.get(`${baseEndpoint}/${id}`);
     return result.data;
   } catch (error) {
     return "Unknown error";
@@ -53,7 +53,7 @@ export async function editStoryAsync(id, title, category, ageSuggested, descript
     formData.append("imageUrl",imageUrl)
     formData.append("formFile", formFile[0]);
 
-    await axios.put(`${baseURL}/editStory`, formData);
+    await axios.put(`${baseEndpoint}/editStory`, formData);
     return null;
 
   } catch (error) {
@@ -68,7 +68,7 @@ export async function editStoryAsync(id, title, category, ageSuggested, descript
 
 export async function deleteStoryAsync(storId) {
   try {
-    const result = await axios.delete(`${baseURL}/${storId}`);
+    const result = await axios.delete(`${baseEndpoint}/${storId}`);
     return result.data;
 
   } catch (error) {

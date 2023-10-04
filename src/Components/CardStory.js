@@ -2,8 +2,6 @@ import { Button, Container, Row, Col, Card } from "react-bootstrap";
 
 export default function CardStory({story, stories, setStories}) {
 const storyQuantity =11;
-
-     
     return (
         <div>
             <Container>

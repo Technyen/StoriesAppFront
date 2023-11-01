@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import Identification from "./Identification";
+import logoStories from '../Images/logo.png';
 
 export default function Header(props) {
   const [login, setLogin] = useState(false)
@@ -11,7 +12,7 @@ export default function Header(props) {
     <>
       <Navbar expand="lg" className="sticky-top bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#home">CHILDREN STORIES</Navbar.Brand>
+          <Navbar.Brand href="#home"> <img src={logoStories} alt="Logo" width="50" height="50" class="d-inline-block align-text-center"/>CHILDREN STORIES</Navbar.Brand>
           {
             login ?
               <Button variant="primary" onClick={() => {props.setShowIdentification(false); props.isUserReader(true)}}>Logout</Button> :

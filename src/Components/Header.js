@@ -12,7 +12,7 @@ export default function Header(props) {
     <>
       <Navbar expand="lg" className="sticky-top bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#home"> <img src={logoStories} alt="Logo" width="50" height="50" class="d-inline-block align-text-center"/>CHILDREN STORIES</Navbar.Brand>
+          <Navbar.Brand href="#home"> <img src={logoStories} alt="Logo" width="50" height="50" className="d-inline-block align-text-center"/>CHILDREN STORIES</Navbar.Brand>
           {
             login ?
               <Button variant="primary" onClick={() => {props.setShowIdentification(false); props.isUserReader(true)}}>Logout</Button> :

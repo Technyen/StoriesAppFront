@@ -1,28 +1,42 @@
-import { Button, Container, Row, Col, Card } from "react-bootstrap";
+import React, {useEffect} from 'react';
+import { getStoriesAsync } from '../Services/storyService';
+import { Table } from 'react-bootstrap';
 
-export default function CardStory({story, stories, setStories}) {
-const storyQuantity =11;
-    return (
-        <div>
-            <Container>
-                <Row xs={3}>
-                    {[...Array(storyQuantity)].map((e,i) => {
-                        return (                    
-                    <Col>
-                        <Card>
-                            <Card.Img top width="100%" src={story.file} />
-                            <Card.Body>
-                                <Card.Title tag="h5">{story.title}</Card.Title>
-                                <Card.Subtitle tag="h6" className="mb-2 text-muted">{story.ageSuggested}</Card.Subtitle>
-                                <Card.Text>{story.category}</Card.Text>
-                                <Button>Button</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                        )
-                    })}
-                </Row>
-            </Container>
-        </div>
-);
-};
+
+
+export default function CardStory({storyId, story, stories, setStories}) {
+
+useEffect(() => {
+    (async () => {
+      const stories = await getStoriesAsync();
+      setStories(stories);
+    })();
+  }, [setStories])
+
+  const renderTable = () => {
+    return stories.map((story, id) => {
+      return (
+        <tr key={id}>
+          <td>{story.title}</td>
+          <td>{story.ageSuggested}</td>
+          <td>{story.category}</td>
+        </tr>
+      )
+    })
+  }
+  return (
+    <>
+      <h1 id="title">Stories</h1>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Age suggested</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>{renderTable()}</tbody>
+      </Table>
+    </>
+  )
+}

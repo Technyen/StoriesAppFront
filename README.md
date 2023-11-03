@@ -3,9 +3,7 @@ https://storiesapp202307.netlify.app/
 
 Please click the below WhatsApp link to check our website 
 
-[![homepage](https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg)](https://api.whatsapp.com/send/?phone=541130662155&text=Hola%20quiero%20probar%20tu%20pagina,%20me%20podrias%20pasar%20un%20usuario%20y%20contrasenia%20de%20prueba?%20A%20continuacion%20te%20digo%20mi%20nombre,%20y%20para%20que%20empresa%20trabajo&type=phone_number&app_absent=0
- "Redirect to WhatsApp")
-
+[![homepage](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/240px-WhatsApp.svg.png)](https://api.whatsapp.com/send/?phone=541130662155&text=Hola,%20me%20gustaria%20probar%20tu%20sitio,%20me%20podrias%20pasar%20un%20usuario%20y%20password%20de%20prueba?&type=phone_number&app_absent=0 "Redirect to homepage")
 
 Backend link:
 

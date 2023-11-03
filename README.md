@@ -65,9 +65,11 @@ I used a constructor **`dependency injection`** design pattern to make the class
 
 **`Xunit`** was used to unit test some methods as a proof of concept and it is planned to have a code coverage of all the code. **`Moq`** was involved in the creation of mock objects to control their behavior and outcomes. Each test was organized following the recommendations: the arrange part where I prepared the variables, the methods, or the services that need to be used to test. The act part, where I executed the method with all the required parameters, and finally, the assert where I validated if the outcome was expected or not.
 
-<img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/1ec3490a-ee38-46d8-95a5-1a9c136c0513">
+<img width="1257" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/eb47dd92-1a3e-49fb-a135-285504b2a3d2">
 
 For each entity, its respective **`CRUD`** controller was created, in turn, this API is connected to the services of each entity and then connects to the infrastructure layer consisting of COSMOS DB and BlobStorage services. I used **`Swagger`** to interact with the API and try out the endpoint calls easily. All code of the project was developed and debugged with **`Visual Studio 2022`**. 
+
+<img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/1ec3490a-ee38-46d8-95a5-1a9c136c0513">
 
 **Azure services**
 
@@ -92,6 +94,8 @@ I used **`OpenID Connect`** with the pipelines because it simplifies the way to 
 <img width="1106" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/fce264e1-06f7-442d-b58d-d7de77f6fd31">
 
 The webpage consists of a header, a carrousel, and dedicated components. All the front-end logic was based on the end-user experience and the flow is divided into two available modes, creator and reader. When the creator logs in, the app calls the backend services, for example, the get method to retrieve all stories (getStoryAsync) and show them as a list. The creator can manage the story, such as creating, modifying, or deleting it. The reader only has access to view the stories created by the creator. Each story is shown using the StoryContent component with the story and an image to illustrate.
+
+<img width="1018" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/e535397a-66ec-44a9-ae58-f26926d50a0e">
 
 I used the **`create-react-app`** framework which allowed me to initallize the **`React`** project rapidly. Something nice to point out is the modularity of components as I didn’t have to write similar code multiple times for similar parts or if in the future I need to change any particular part, it should not affect other parts of my application. Also, this framework wraps all of the required dependencies needed. One of the dependencies that was very useful was the included linter that helped me scan my code and flag any code errors. For debugging errors, I often started by thinking out all possible causes and used breakpoints here and there to test each of these hypotheses, until the ultimate root cause was found. 
 

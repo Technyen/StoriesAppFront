@@ -1,9 +1,9 @@
 # **DEMO Stories for Kids**
 https://storiesapp202307.netlify.app/
 
-Please click the below WhatsApp link to check our website 
+# Whatsapp me to request credentials for the site👉[![homepage](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/40px-WhatsApp.svg.png)](https://api.whatsapp.com/send/?phone=541130662155&text=Hola,%20me%20gustaria%20probar%20tu%20sitio,%20me%20podrias%20pasar%20un%20usuario%20y%20password%20de%20prueba?&type=phone_number&app_absent=0 "Redirect to homepage")
 
-[![homepage](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/240px-WhatsApp.svg.png)](https://api.whatsapp.com/send/?phone=541130662155&text=Hola,%20me%20gustaria%20probar%20tu%20sitio,%20me%20podrias%20pasar%20un%20usuario%20y%20password%20de%20prueba?&type=phone_number&app_absent=0 "Redirect to homepage")
+
 
 Backend link:
 
@@ -88,13 +88,20 @@ I used **`OpenID Connect`** with the pipelines because it simplifies the way to 
 
 ## **The Frontend part 🖼️**<a name="Frontend"></a>
 
-<img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/169e43cd-8319-4513-8ea4-771a45f0b40c">
 
+<img width="1106" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/fce264e1-06f7-442d-b58d-d7de77f6fd31">
 
 The webpage consists of a header, a carrousel, and dedicated components. All the front-end logic was based on the end-user experience and the flow is divided into two available modes, creator and reader. When the creator logs in, the app calls the backend services, for example, the get method to retrieve all stories (getStoryAsync) and show them as a list. The creator can manage the story, such as creating, modifying, or deleting it. The reader only has access to view the stories created by the creator. Each story is shown using the StoryContent component with the story and an image to illustrate.
 
 I used the **`create-react-app`** framework which allowed me to initallize the **`React`** project rapidly. Something nice to point out is the modularity of components as I didn’t have to write similar code multiple times for similar parts or if in the future I need to change any particular part, it should not affect other parts of my application. Also, this framework wraps all of the required dependencies needed. One of the dependencies that was very useful was the included linter that helped me scan my code and flag any code errors. For debugging errors, I often started by thinking out all possible causes and used breakpoints here and there to test each of these hypotheses, until the ultimate root cause was found. 
 
+
+<img width="1004" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/db62ccd7-3937-4544-bcac-a54e174f3b20">
+
+
 For the aesthetics of the components, I utilized the **`React-Bootstrap`** library because creates React components for me, I just needed to specify properties and hooks in the component, and the library did the rest of the abstraction.  Some components work with backend service, so I used Axios which simplified the communication with the API backend to get our payloads. For components such as LoginModal, RegisterModal, and CreateStory modal I employed **`React Hook Form`** tool to validate forms. With this library,  I was able to handle all the input states and their changes, ensuring that input was validated when the form was submitted.
+
+
+<img width="1013" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/73270453-28bf-4778-8409-0631ca48f692">
 
 I successfully deployed my React application with **`Netlify`** UI. To connect my Netflify account with my GitHub account, I authorized the connection and gave Netlify access to my frontend repository. Next, I added the repository as a new project and specified the necessary build settings for deployment. Since my project is divided into 2 repositories, I chose the StoriesFront directory for deployment. Upon completion of the building phase, Netlify automatically generated a unique URL for my project site.  

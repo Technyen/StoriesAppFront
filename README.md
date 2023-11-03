@@ -100,7 +100,8 @@ The webpage consists of a header, a carrousel, and dedicated components. All the
 I used the **`create-react-app`** framework which allowed me to initallize the **`React`** project rapidly. Something nice to point out is the modularity of components as I didn’t have to write similar code multiple times for similar parts or if in the future I need to change any particular part, it should not affect other parts of my application. Also, this framework wraps all of the required dependencies needed. One of the dependencies that was very useful was the included linter that helped me scan my code and flag any code errors. For debugging errors, I often started by thinking out all possible causes and used breakpoints here and there to test each of these hypotheses, until the ultimate root cause was found. 
 
 
-<img width="1004" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/db62ccd7-3937-4544-bcac-a54e174f3b20">
+<img width="1028" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/5c597434-dc34-416a-ade3-7b89e491183f">
+
 
 
 For the aesthetics of the components, I utilized the **`React-Bootstrap`** library because creates React components for me, I just needed to specify properties and hooks in the component, and the library did the rest of the abstraction.  Some components work with backend service, so I used Axios which simplified the communication with the API backend to get our payloads. For components such as LoginModal, RegisterModal, and CreateStory modal I employed **`React Hook Form`** tool to validate forms. With this library,  I was able to handle all the input states and their changes, ensuring that input was validated when the form was submitted.

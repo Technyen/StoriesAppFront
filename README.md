@@ -1,7 +1,8 @@
-# **DEMO Stories for Kids**
+# **DEMO Stories for Kids** 😎
+
 https://storiesapp202307.netlify.app/
 
-# Whatsapp me to request credentials for the site👉[![homepage](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/40px-WhatsApp.svg.png)](https://api.whatsapp.com/send/?phone=541130662155&text=Hola,%20me%20gustaria%20probar%20tu%20sitio,%20me%20podrias%20pasar%20un%20usuario%20y%20password%20de%20prueba?&type=phone_number&app_absent=0 "Redirect to WhatsApp")
+## 📱Whatsapp me to request credentials for the site👉[![homepage](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/40px-WhatsApp.svg.png)](https://api.whatsapp.com/send/?phone=541130662155&text=Hola,%20me%20gustaria%20probar%20tu%20sitio,%20me%20podrias%20pasar%20un%20usuario%20y%20password%20de%20prueba?&type=phone_number&app_absent=0 "Redirect to WhatsApp")
 
 
 
@@ -44,6 +45,9 @@ The Project is separated into 2 repositories, which are a front-end React web ap
 
 <img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/c2433f8f-fad9-48f8-b010-4683219c3735">
 
+ *Visual Studio Backend code* 
+
+
 
 I used an **`Onion Architecture`** because it enables the layers to have a separation of concerns so they are not tightly coupled. The goal was to keep external dependencies as far away from the rest of the layers as possible. Also, all code depends on a domain model with layers connected by interfaces that offer better maintainability, and easier testability, and the entire code can be written for distinct levels without affecting the others. I split the code into 4 layers:
 
@@ -67,24 +71,48 @@ I used a constructor **`dependency injection`** design pattern to make the class
 
 <img width="1257" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/eb47dd92-1a3e-49fb-a135-285504b2a3d2">
 
+*xUnit testing with Moq*
+
+
+
 For each entity, its respective **`CRUD`** controller was created, in turn, this API is connected to the services of each entity and then connects to the infrastructure layer consisting of COSMOS DB and BlobStorage services. I used **`Swagger`** to interact with the API and try out the endpoint calls easily. All code of the project was developed and debugged with **`Visual Studio 2022`**. 
 
 <img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/1ec3490a-ee38-46d8-95a5-1a9c136c0513">
 
-**Azure services**
+*API swagger*
+
+
+
+**<h3>Azure services</h3>**
 
 I authenticated all Azure services with **`passwordless`** authentication because it is considered a more secure alternative than using bare passwords. The Azure identity library in this regard, provides token authentication and allowed me to authenticate to Azure resources with the application locally in Visual Studio and to authenticate the API in Azure with DefaultAzureCredential and Role Based Access control. 
 
 **`Azure Cosmos DB`** is a fully managed NoSQL database that I used for this project where I stored entities like Story and User as JSON documents. LINQ was used to make it easy to filter, order, and group collections of users and stories.
+<img width="1239" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/8a78875b-1dbd-4aab-b13a-95a4679a1f85">
+*Azure Cosmos Db screenshot*
+
+
 
 **`Azure Blob Storage`** allowed me to store files such as stories‘ images for my project represented as blobs which are organized in containers that work similarly to directories, that in turn, exist in a Storage Account.
+<img width="1236" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/0d932386-b0e4-4cd4-8687-52d5d3c01831">
+*Azure Blob Storage screenshot*
 
-**Deployment**
+
+
+**<h3>Deployment</h3>**
 
 <img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/1d24d44c-b910-46c4-8c1c-ff12dd36dd8b">
 
+*CI Pipeline*
+
+
 
 I used GitHub pipelines **`CI/CD`** solution to get more reliable PRs delivered and to automate the deployment workflow of my backend API. I created two pipelines, one that gets triggered with every push to a branch involved in a PR so the reviewer could validate that the project was built and the tests passed. This streamlined the PR process and reduced it to just reviewing the code and feedback discussion. The other pipeline is meant to execute the same building and testing steps plus the deployment phase to production only after the PR is approved and merged into the master branch.
+
+<img width="1262" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/8c2952c7-1c04-439a-be75-48deb5e50df5">
+
+*CI/CD Pipeline*
+
 
 I used **`OpenID Connect`** with the pipelines because it simplifies the way to verify the identity of the deployment pipeline (GitHub Actions) based on the authentication performed by the authorization server (Azure). It removes the responsibility of setting, storing, and managing passwords which is frequently associated with credential-based data breaches. 
 
@@ -93,14 +121,26 @@ I used **`OpenID Connect`** with the pipelines because it simplifies the way to 
 
 <img width="1106" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/fce264e1-06f7-442d-b58d-d7de77f6fd31">
 
+*Home Page*
+
+
+
 The webpage consists of a header, a carrousel, and dedicated components. All the front-end logic was based on the end-user experience and the flow is divided into two available modes, creator and reader. When the creator logs in, the app calls the backend services, for example, the get method to retrieve all stories (getStoryAsync) and show them as a list. The creator can manage the story, such as creating, modifying, or deleting it. The reader only has access to view the stories created by the creator. Each story is shown using the StoryContent component with the story and an image to illustrate.
 
 <img width="1018" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/e535397a-66ec-44a9-ae58-f26926d50a0e">
+
+*login modal*
+
+
+
 
 I used the **`create-react-app`** framework which allowed me to initallize the **`React`** project rapidly. Something nice to point out is the modularity of components as I didn’t have to write similar code multiple times for similar parts or if in the future I need to change any particular part, it should not affect other parts of my application. Also, this framework wraps all of the required dependencies needed. One of the dependencies that was very useful was the included linter that helped me scan my code and flag any code errors. For debugging errors, I often started by thinking out all possible causes and used breakpoints here and there to test each of these hypotheses, until the ultimate root cause was found. 
 
 
 <img width="1028" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/5c597434-dc34-416a-ade3-7b89e491183f">
+
+*Story CRUD methods*
+
 
 
 
@@ -109,4 +149,13 @@ For the aesthetics of the components, I utilized the **`React-Bootstrap`** libra
 
 <img width="1013" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/73270453-28bf-4778-8409-0631ca48f692">
 
+*Edit story modal*
+
+
+
 I successfully deployed my React application with **`Netlify`** UI. To connect my Netflify account with my GitHub account, I authorized the connection and gave Netlify access to my frontend repository. Next, I added the repository as a new project and specified the necessary build settings for deployment. Since my project is divided into 2 repositories, I chose the StoriesFront directory for deployment. Upon completion of the building phase, Netlify automatically generated a unique URL for my project site.  
+
+<img width="1253" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/e36a2ca3-f80e-4cc6-b21e-153b8489ecbd">
+
+*Netlify deploy screenshot*
+

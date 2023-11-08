@@ -1,14 +1,16 @@
 # **DEMO Stories for Kids** 😎
 
+Frontend link:
+
 https://storiesapp202307.netlify.app/
 
-## 📱Whatsapp me to request credentials for the site👉[![homepage](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/40px-WhatsApp.svg.png)](https://api.whatsapp.com/send/?phone=541130662155&text=Hola,%20me%20gustaria%20probar%20tu%20sitio,%20me%20podrias%20pasar%20un%20usuario%20y%20password%20de%20prueba?&type=phone_number&app_absent=0 "Redirect to WhatsApp")
+📱Whatsapp me to request credentials for the site👉[![homepage](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/40px-WhatsApp.svg.png)](https://api.whatsapp.com/send/?phone=541130662155&text=Hola,%20me%20gustaria%20probar%20tu%20sitio,%20me%20podrias%20pasar%20un%20usuario%20y%20password%20de%20prueba?&type=phone_number&app_absent=0 "Redirect to WhatsApp")
 
-
-
+<br/>
 Backend link:
 
 https://github.com/Technyen/StoriesAppBack
+
 
 ## **Index** 📝
 - [Objetive](#Objetive)
@@ -45,7 +47,7 @@ The Project is separated into 2 repositories, which are a front-end React web ap
 
 <img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/c2433f8f-fad9-48f8-b010-4683219c3735">
 
- *Visual Studio Backend code* 
+ *Backend code in Visual Studio* 
 
 
 
@@ -79,7 +81,7 @@ For each entity, its respective **`CRUD`** controller was created, in turn, this
 
 <img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/1ec3490a-ee38-46d8-95a5-1a9c136c0513">
 
-*API swagger*
+*API Swagger*
 
 
 
@@ -89,13 +91,13 @@ I authenticated all Azure services with **`passwordless`** authentication becaus
 
 **`Azure Cosmos DB`** is a fully managed NoSQL database that I used for this project where I stored entities like Story and User as JSON documents. LINQ was used to make it easy to filter, order, and group collections of users and stories.
 <img width="1239" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/8a78875b-1dbd-4aab-b13a-95a4679a1f85">
-*Azure Cosmos Db screenshot*
+*Stories metadata in Azure Cosmos Db*
 
 
 
 **`Azure Blob Storage`** allowed me to store files such as stories‘ images for my project represented as blobs which are organized in containers that work similarly to directories, that in turn, exist in a Storage Account.
 <img width="1236" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/0d932386-b0e4-4cd4-8687-52d5d3c01831">
-*Azure Blob Storage screenshot*
+*Images of the story in Azure Blob Storage*
 
 
 
@@ -103,7 +105,7 @@ I authenticated all Azure services with **`passwordless`** authentication becaus
 
 <img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/1d24d44c-b910-46c4-8c1c-ff12dd36dd8b">
 
-*CI Pipeline*
+*Github Actions execution of CI Pipeline*
 
 
 
@@ -111,7 +113,7 @@ I used GitHub pipelines **`CI/CD`** solution to get more reliable PRs delivered 
 
 <img width="1262" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/8c2952c7-1c04-439a-be75-48deb5e50df5">
 
-*CI/CD Pipeline*
+*Github Actions details of CI/CD Pipeline*
 
 
 I used **`OpenID Connect`** with the pipelines because it simplifies the way to verify the identity of the deployment pipeline (GitHub Actions) based on the authentication performed by the authorization server (Azure). It removes the responsibility of setting, storing, and managing passwords which is frequently associated with credential-based data breaches. 
@@ -121,7 +123,7 @@ I used **`OpenID Connect`** with the pipelines because it simplifies the way to 
 
 <img width="1106" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/fce264e1-06f7-442d-b58d-d7de77f6fd31">
 
-*Home Page*
+*App Home Page*
 
 
 
@@ -129,7 +131,7 @@ The webpage consists of a header, a carrousel, and dedicated components. All the
 
 <img width="1018" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/e535397a-66ec-44a9-ae58-f26926d50a0e">
 
-*login modal*
+*Front App login modal*
 
 
 
@@ -139,7 +141,7 @@ I used the **`create-react-app`** framework which allowed me to initallize the *
 
 <img width="1028" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/5c597434-dc34-416a-ade3-7b89e491183f">
 
-*Story CRUD methods*
+*Story list for Creator view*
 
 
 
@@ -149,7 +151,7 @@ For the aesthetics of the components, I utilized the **`React-Bootstrap`** libra
 
 <img width="1013" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/73270453-28bf-4778-8409-0631ca48f692">
 
-*Edit story modal*
+*Edit story modal for Creator view*
 
 
 
@@ -157,5 +159,5 @@ I successfully deployed my React application with **`Netlify`** UI. To connect m
 
 <img width="1253" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/e36a2ca3-f80e-4cc6-b21e-153b8489ecbd">
 
-*Netlify deploy screenshot*
+*Netlify CI/CD details*
 

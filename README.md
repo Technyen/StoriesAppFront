@@ -4,12 +4,12 @@ Frontend link:
 
 https://storiesapp202307.netlify.app/
 
-📱Whatsapp me to request credentials for the site👉[![homepage](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/40px-WhatsApp.svg.png)](https://api.whatsapp.com/send/?phone=541130662155&text=Hola,%20me%20gustaria%20probar%20tu%20sitio,%20me%20podrias%20pasar%20un%20usuario%20y%20password%20de%20prueba?&type=phone_number&app_absent=0 "Redirect to WhatsApp")
-
 <br/>
 Backend link:
 
 https://github.com/Technyen/StoriesAppBack
+
+📱Whatsapp me to request credentials for the site👉[![homepage](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/40px-WhatsApp.svg.png)](https://api.whatsapp.com/send/?phone=541130662155&text=Hola,%20me%20gustaria%20probar%20tu%20sitio,%20me%20podrias%20pasar%20un%20usuario%20y%20password%20de%20prueba?&type=phone_number&app_absent=0 "Redirect to WhatsApp")
 
 
 ## **Index** 📝
@@ -97,7 +97,7 @@ I authenticated all Azure services with **`passwordless`** authentication becaus
 
 **`Azure Blob Storage`** allowed me to store files such as stories‘ images for my project represented as blobs which are organized in containers that work similarly to directories, that in turn, exist in a Storage Account.
 <img width="1236" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/0d932386-b0e4-4cd4-8687-52d5d3c01831">
-*Images of the story in Azure Blob Storage*
+*Images of the stories in Azure Blob Storage*
 
 
 
@@ -105,7 +105,7 @@ I authenticated all Azure services with **`passwordless`** authentication becaus
 
 <img width="1000" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/1d24d44c-b910-46c4-8c1c-ff12dd36dd8b">
 
-*Github Actions execution of CI Pipeline*
+*Github Actions executions of CI Pipeline*
 
 
 
@@ -113,7 +113,7 @@ I used GitHub pipelines **`CI/CD`** solution to get more reliable PRs delivered 
 
 <img width="1262" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/8c2952c7-1c04-439a-be75-48deb5e50df5">
 
-*Github Actions details of CI/CD Pipeline*
+*Details of CI/CD Pipeline in Github Actions*
 
 
 I used **`OpenID Connect`** with the pipelines because it simplifies the way to verify the identity of the deployment pipeline (GitHub Actions) based on the authentication performed by the authorization server (Azure). It removes the responsibility of setting, storing, and managing passwords which is frequently associated with credential-based data breaches. 
@@ -131,7 +131,7 @@ The webpage consists of a header, a carrousel, and dedicated components. All the
 
 <img width="1018" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/e535397a-66ec-44a9-ae58-f26926d50a0e">
 
-*Front App login modal*
+* login modal in frontend app*
 
 
 
@@ -141,7 +141,7 @@ I used the **`create-react-app`** framework which allowed me to initallize the *
 
 <img width="1028" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/5c597434-dc34-416a-ade3-7b89e491183f">
 
-*Story list for Creator view*
+*Story list for the Creator view*
 
 
 
@@ -151,7 +151,7 @@ For the aesthetics of the components, I utilized the **`React-Bootstrap`** libra
 
 <img width="1013" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/73270453-28bf-4778-8409-0631ca48f692">
 
-*Edit story modal for Creator view*
+*Edit story modal for the Creator view*
 
 
 

@@ -159,5 +159,5 @@ I successfully deployed my React application with **`Netlify`** UI. To connect m
 
 <img width="1253" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/e36a2ca3-f80e-4cc6-b21e-153b8489ecbd">
 
-*Netlify CI/CD details*
+*Netlify CI/CD pipeline details*
 

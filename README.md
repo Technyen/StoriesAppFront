@@ -39,6 +39,10 @@ This project was created mainly for children’s stories. The idea is to be able
 
 To carry out this project, I utilized Azure DevOps to organize the workload and plan out Epics, Features, and daily User Stories for coding, spikes, and design tasks. Also, I used Scrum to address my project as this working methodology helped my workflow be more agile, productive, and efficient. For planning we set up  the Sprint’s goals and essential tasks, evaluated and estimated the time they would take and how I would complete them. For example, before starting this project, I started to learn the C# language, React framework, and other technologies or libraries that are related, and we estimated the expected time to complete it. 
 
+<img width="1273" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/2bcbe54d-3dd6-46b9-9a07-03797f676388">
+
+
+
 Throughout the project, I communicated with the product owner regularly to report on the progress of my task performed the day before and scheduled for the day ahead. I also  demonstrated the completed functionality of the project to my colleague, discussed possible better solutions and the current state of the product Backlog, and forecasted for the next sprint. We evaluated each iteration of the product backlog and assessed what went well and what needed to be improved.
 
 The Project is separated into 2 repositories, which are a front-end React web app and a NET 7 back-end API. The reasons were modularization and deployment because having a multirepo approach makes my project scalable, and also easier to integrate with CI/CD tools.

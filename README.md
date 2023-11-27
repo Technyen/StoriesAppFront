@@ -41,6 +41,7 @@ To carry out this project, I utilized Azure DevOps to organize the workload and 
 
 <img width="1273" alt="image" src="https://github.com/Technyen/StoriesAppFront/assets/111035289/2bcbe54d-3dd6-46b9-9a07-03797f676388">
 
+*Tasks in DevOps*
 
 
 Throughout the project, I communicated with the product owner regularly to report on the progress of my task performed the day before and scheduled for the day ahead. I also  demonstrated the completed functionality of the project to my colleague, discussed possible better solutions and the current state of the product Backlog, and forecasted for the next sprint. We evaluated each iteration of the product backlog and assessed what went well and what needed to be improved.
